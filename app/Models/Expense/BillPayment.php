@@ -21,7 +21,7 @@ class BillPayment extends Model
     protected $fillable = [
       'company_id',
       'bill_id',
-      'account_id',
+      'bankaccount_id',
       'paid_at',
       'amount',
       'currency_code',

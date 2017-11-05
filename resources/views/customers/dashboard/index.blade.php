@@ -80,7 +80,7 @@
                   </td>
                   <td>@money($item->amount, $item->currency_code, true)</td>
                   <td>{{ $item->category->name }}</td>
-                  <td>{{ $item->account->name }}</td>
+                  <td>{{ $item->bankaccount->name }}</td>
                 </tr>
               @endforeach
               </tbody>

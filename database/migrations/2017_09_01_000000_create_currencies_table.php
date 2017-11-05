@@ -13,7 +13,7 @@ class CreateCurrenciesTable extends Migration
     {
         Schema::create('currencies', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
+            $table->unsignedInteger('company_id');
             $table->string('name');
             $table->string('code');
             $table->double('rate', 15, 8);

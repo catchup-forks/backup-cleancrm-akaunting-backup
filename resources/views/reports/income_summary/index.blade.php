@@ -72,7 +72,7 @@
 @endsection
 
 @section('js')
-  <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/chartjs/Chart.min.js') }}"></script>
+  <script src="{{ asset('/plugins/chartjs/Chart.min.js') }}"></script>
 @endsection
 
 @section('scripts')

@@ -13,7 +13,7 @@ class CreateTransfersTable extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
+            $table->unsignedInteger('company_id');
             $table->integer('payment_id');
             $table->integer('revenue_id');
             $table->timestamps();

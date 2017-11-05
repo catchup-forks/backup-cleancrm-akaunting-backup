@@ -21,13 +21,13 @@ class CreateRolesTable extends Migration
             $table->unique('name');
         });
         // Create table for associating roles to users (Many To Many Polymorphic)
-        Schema::create('user_roles', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
+        Schema::create('staff_roles', function (Blueprint $table) {
+            $table->integer('staff_id')->unsigned();
             $table->integer('role_id')->unsigned();
             $table->string('user_type');
-            $table->foreign('role_id')->references('id')->on('roles')
-              ->onUpdate('cascade')->onDelete('cascade');
-            $table->primary(['user_id', 'role_id', 'user_type']);
+            /*$table->foreign('role_id')->references('id')->on('roles')
+              ->onUpdate('cascade')->onDelete('cascade');*/
+            $table->primary(['staff_id', 'role_id', 'user_type']);
         });
         // Create table for storing permissions
         Schema::create('permissions', function (Blueprint $table) {
@@ -42,20 +42,20 @@ class CreateRolesTable extends Migration
         Schema::create('role_permissions', function (Blueprint $table) {
             $table->integer('role_id')->unsigned();
             $table->integer('permission_id')->unsigned();
-            $table->foreign('role_id')->references('id')->on('roles')
-              ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('permission_id')->references('id')->on('permissions')
-              ->onUpdate('cascade')->onDelete('cascade');
+            /*$table->foreign('role_id')->references('id')->on('roles')
+              ->onUpdate('cascade')->onDelete('cascade');*/
+            /*$table->foreign('permission_id')->references('id')->on('permissions')
+              ->onUpdate('cascade')->onDelete('cascade');*/
             $table->primary(['role_id', 'permission_id']);
         });
         // Create table for associating permissions to users (Many To Many Polymorphic)
-        Schema::create('user_permissions', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
+        Schema::create('staff_permissions', function (Blueprint $table) {
+            $table->integer('staff_id')->unsigned();
             $table->integer('permission_id')->unsigned();
             $table->string('user_type');
-            $table->foreign('permission_id')->references('id')->on('permissions')
-              ->onUpdate('cascade')->onDelete('cascade');
-            $table->primary(['user_id', 'permission_id', 'user_type']);
+            /*$table->foreign('permission_id')->references('id')->on('permissions')
+              ->onUpdate('cascade')->onDelete('cascade');*/
+            $table->primary(['staff_id', 'permission_id', 'user_type']);
         });
 
     }
@@ -68,10 +68,10 @@ class CreateRolesTable extends Migration
     public function down()
     {
         // Cascade table first
-        Schema::dropIfExists('user_permissions');
+        Schema::dropIfExists('staff_permissions');
         Schema::dropIfExists('role_permissions');
         Schema::dropIfExists('permissions');
-        Schema::dropIfExists('user_roles');
+        Schema::dropIfExists('staff_roles');
         Schema::dropIfExists('roles');
     }
 }

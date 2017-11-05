@@ -19,7 +19,7 @@ class CreateInvoiceTotalsTable extends Migration
     {
         Schema::create('invoice_totals', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
+            $table->unsignedInteger('company_id');
             $table->integer('invoice_id');
             $table->string('code')->nullable();
             $table->string('name');

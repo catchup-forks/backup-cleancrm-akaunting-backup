@@ -13,7 +13,7 @@ class CreateModulesTable extends Migration
     {
         Schema::create('modules', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
+            $table->unsignedInteger('company_id');
             $table->string('alias');
             $table->integer('status');
             $table->timestamps();
@@ -23,7 +23,7 @@ class CreateModulesTable extends Migration
         });
         Schema::create('module_histories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
+            $table->unsignedInteger('company_id');
             $table->integer('module_id');
             $table->string('category');
             $table->string('version');

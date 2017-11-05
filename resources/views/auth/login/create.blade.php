@@ -49,12 +49,12 @@
 
   @section('js')
     <!-- iCheck -->
-  <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/iCheck/icheck.min.js') }}"></script>
+  <script src="{{ asset('/plugins/iCheck/icheck.min.js') }}"></script>
   @endsection
 
   @section('css')
     <!-- iCheck -->
-  <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/plugins/iCheck/square/green.css') }}">
+  <link rel="stylesheet" href="{{ asset('/plugins/iCheck/square/green.css') }}">
 @endsection
 
 @section('scripts')

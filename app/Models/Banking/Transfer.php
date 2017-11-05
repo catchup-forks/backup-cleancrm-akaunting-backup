@@ -31,7 +31,7 @@ class Transfer extends Model
 
     public function paymentAccount()
     {
-        return $this->belongsTo('App\Models\Banking\Account', 'payment.account_id', 'id');
+        return $this->belongsTo('App\Models\Banking\Account', 'payment.bankaccount_id', 'id');
     }
 
     public function revenue()
@@ -41,7 +41,7 @@ class Transfer extends Model
 
     public function revenueAccount()
     {
-        return $this->belongsTo('App\Models\Banking\Account', 'revenue.account_id', 'id');
+        return $this->belongsTo('App\Models\Banking\Account', 'revenue.bankaccount_id', 'id');
     }
 
     public function getDynamicConvertedAmount($format = false)

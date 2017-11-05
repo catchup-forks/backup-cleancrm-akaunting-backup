@@ -41,11 +41,11 @@
 @endsection
 
 @section('js')
-  <script src="{{ asset('public/js/bootstrap-fancyfile.js') }}"></script>
+  <script src="{{ asset('js/bootstrap-fancyfile.js') }}"></script>
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href="{{ asset('public/css/bootstrap-fancyfile.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap-fancyfile.css') }}">
 @endsection
 
 @section('scripts')

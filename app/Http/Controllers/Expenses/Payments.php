@@ -85,7 +85,7 @@ class Payments extends Controller
     {
         $accounts = Account::enabled()->pluck('name', 'id');
         $currencies = Currency::enabled()->pluck('name', 'code')->toArray();
-        $account_currency_code = Account::where('id', $payment->account_id)->pluck('currency_code')->first();
+        $account_currency_code = Account::where('id', $payment->bankaccount_id)->pluck('currency_code')->first();
         $vendors = Vendor::enabled()->pluck('name', 'id');
         $categories = Category::enabled()->type('expense')->pluck('name', 'id');
         $payment_methods = Modules::getPaymentMethods();

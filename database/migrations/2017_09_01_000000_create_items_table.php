@@ -13,7 +13,7 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
+            $table->unsignedInteger('company_id');
             $table->string('name');
             $table->string('sku');
             $table->text('description')->nullable();

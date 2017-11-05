@@ -36,7 +36,7 @@
         @foreach($transactions as $item)
           <tr>
             <td>{{ Date::parse($item->date)->format($date_format) }}</td>
-            <td>{{ $item->account }}</td>
+            <td>{{ $item->bankaccount }}</td>
             <td>{{ $item->type }}</td>
             <td>{{ $item->category }}</td>
             <td>{{ $item->description }}</td>

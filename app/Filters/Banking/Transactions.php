@@ -15,7 +15,7 @@ class Transactions extends ModelFilter
 
     public function account($account_id)
     {
-        return $this->where('account_id', $account_id);
+        return $this->where('bankaccount_id', $account_id);
     }
 
     public function category($category_id)

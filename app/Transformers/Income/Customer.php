@@ -15,7 +15,7 @@ class Customer extends TransformerAbstract
         return [
           'id' => $model->id,
           'company_id' => $model->company_id,
-          'user_id' => $model->user_id,
+          'staff_id' => $model->staff_id,
           'name' => $model->name,
           'email' => $model->email,
           'tax_number' => $model->tax_number,

@@ -23,7 +23,7 @@ class InvoicePayment extends Request
     public function rules()
     {
         return [
-          'account_id' => 'required|integer',
+          'bankaccount_id' => 'required|integer',
           'paid_at' => 'required|date',
           'amount' => 'required',
           'currency_code' => 'required|string',

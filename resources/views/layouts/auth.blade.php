@@ -4,7 +4,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <img src="{{ asset('public/img/akaunting-logo-white.png') }}" alt="Akaunting"/>
+    <img src="{{ asset('img/akaunting-logo-white.png') }}" alt="Akaunting"/>
   </div>
   <!-- /.login-logo -->
 

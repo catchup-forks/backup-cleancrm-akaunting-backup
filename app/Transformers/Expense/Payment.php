@@ -23,7 +23,7 @@ class Payment extends TransformerAbstract
         return [
           'id' => $model->id,
           'company_id' => $model->company_id,
-          'account_id' => $model->account_id,
+          'bankaccount_id' => $model->bankaccount_id,
           'paid_at' => $model->paid_at->toIso8601String(),
           'amount' => $model->amount,
           'currency_code' => $model->currency_code,
@@ -45,7 +45,7 @@ class Payment extends TransformerAbstract
      */
     public function includeAccount(Model $model)
     {
-        return $this->item($model->account, new Account());
+        return $this->item($model->bankaccount, new Account());
     }
 
     /**

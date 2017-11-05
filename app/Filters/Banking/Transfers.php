@@ -15,11 +15,11 @@ class Transfers extends ModelFilter
 
     public function fromAccount($account_id)
     {
-        return $this->where('payments.account_id', $account_id);
+        return $this->where('payments.bankaccount_id', $account_id);
     }
 
     public function toAccount($account_id)
     {
-        return $this->related('revenue', 'revenues.account_id', '=', $account_id);
+        return $this->related('revenue', 'revenues.bankaccount_id', '=', $account_id);
     }
 }

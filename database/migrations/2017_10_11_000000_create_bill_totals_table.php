@@ -19,7 +19,7 @@ class CreateBillTotalsTable extends Migration
     {
         Schema::create('bill_totals', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
+            $table->unsignedInteger('company_id');
             $table->integer('bill_id');
             $table->string('code')->nullable();
             $table->string('name');

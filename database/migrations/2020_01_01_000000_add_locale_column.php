@@ -10,7 +10,7 @@ class AddLocaleColumn extends Migration
      */
     public function up()
     {
-        Schema::table('users', function ($table) {
+        Schema::table('staff', function ($table) {
             $table->string('locale')->default(config('app.locale'));
         });
     }
@@ -22,7 +22,7 @@ class AddLocaleColumn extends Migration
      */
     public function down()
     {
-        Schema::table('users', function ($table) {
+        Schema::table('staff', function ($table) {
             $table->dropColumn('locale');
         });
     }

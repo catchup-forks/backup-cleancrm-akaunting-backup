@@ -3,11 +3,11 @@
   <a href="#" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><img
-        src="{{ !empty($company->company_logo) ? Storage::url($company->company_logo) : asset('public/img/company.png') }}"
+        src="{{ !empty($company->company_logo) ? Storage::url($company->company_logo) : asset('img/company.png') }}"
         class="logo-image-mini" width="25" alt="{{ $company->company_name }}"></span>
     <!-- logo for regular state and mobile devices -->
     <span class="logo-lg"><img
-        src="{{ !empty($company->company_logo) ? Storage::url($company->company_logo) : asset('public/img/company.png') }}"
+        src="{{ !empty($company->company_logo) ? Storage::url($company->company_logo) : asset('img/company.png') }}"
         width="25" alt="{{ $company->company_name }}"> <b>{{ str_limit($company->company_name, 15) }}</b></span>
   </a>
   <!-- Header Navbar: style can be found in header.less -->

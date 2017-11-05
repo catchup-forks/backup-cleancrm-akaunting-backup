@@ -150,7 +150,7 @@ class Currencies extends Controller
     public function currency()
     {
         $json = new \stdClass();
-        $account_id = request('account_id');
+        $account_id = request('bankaccount_id');
         if ($account_id) {
             $currencies = Currency::enabled()->pluck('name', 'code')->toArray();
             $json->currency_code = Account::where('id', $account_id)->pluck('currency_code')->first();

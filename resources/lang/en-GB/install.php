@@ -4,9 +4,9 @@ return [
   'refresh' => 'Refresh',
   'steps' => [
     'requirements' => 'Please, meet the following requirements!',
-    'language' => 'Step 1/3 : Language Selection',
-    'database' => 'Step 2/3 : Database Setup',
-    'settings' => 'Step 3/3 : Company and Admin Details',
+    'language' => 'Installing : Step 1/3 : Language Selection',
+    'database' => 'Installing : Step 2/3 : Database Setup',
+    'settings' => 'Installing : Step 3/3 : Company and Admin Details',
   ],
   'language' => [
     'select' => 'Select Language',

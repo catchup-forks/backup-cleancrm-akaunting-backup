@@ -34,11 +34,11 @@
 @endsection
 
 @section('js')
-  <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+  <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/plugins/datepicker/datepicker3.css') }}">
+  <link rel="stylesheet" href="{{ asset('/plugins/datepicker/datepicker3.css') }}">
 @endsection
 
 @section('scripts')

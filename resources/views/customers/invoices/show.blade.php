@@ -224,7 +224,7 @@
               <tr>
                 <td>{{ Date::parse($payment->paid_at)->format($date_format) }}</td>
                 <td>@money($payment->amount, $payment->currency_code, true)</td>
-                <td>{{ $payment->account->name }}</td>
+                <td>{{ $payment->bankaccount->name }}</td>
                 <td>
                   <a href="{{ url('incomes/invoices/' . $payment->id . '') }}" class="btn btn-info btn-xs hidden"><i
                       class="fa fa-eye" aria-hidden="true"></i> {{ trans('general.show') }}</a>
@@ -241,7 +241,7 @@
                       'type'    => 'button',
                       'class'   => 'btn btn-danger btn-xs',
                       'title'   => trans('general.delete'),
-                      'onclick' => 'confirmDelete("' . '#invoice-payment-' . $payment->id . '", "' . trans_choice('general.payments', 2) . '", "' . trans('general.delete_confirm', ['name' => '<strong>' . Date::parse($payment->paid_at)->format($date_format) . ' - ' . money($payment->amount, $payment->currency_code, true) . ' - ' . $payment->account->name . '</strong>', 'type' => strtolower(trans_choice('general.revenues', 1))]) . '", "' . trans('general.cancel') . '", "' . trans('general.delete') . '")'
+                      'onclick' => 'confirmDelete("' . '#invoice-payment-' . $payment->id . '", "' . trans_choice('general.payments', 2) . '", "' . trans('general.delete_confirm', ['name' => '<strong>' . Date::parse($payment->paid_at)->format($date_format) . ' - ' . money($payment->amount, $payment->currency_code, true) . ' - ' . $payment->bankaccount->name . '</strong>', 'type' => strtolower(trans_choice('general.revenues', 1))]) . '", "' . trans('general.cancel') . '", "' . trans('general.delete') . '")'
                   )) !!}
                   {!! Form::close() !!}
                 </td>
@@ -256,13 +256,13 @@
 @endsection
 
 @section('js')
-  <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
-  <script src="{{ asset('public/js/bootstrap-fancyfile.js') }}"></script>
+  <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+  <script src="{{ asset('js/bootstrap-fancyfile.js') }}"></script>
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/plugins/datepicker/datepicker3.css') }}">
-  <link rel="stylesheet" href="{{ asset('public/css/bootstrap-fancyfile.css') }}">
+  <link rel="stylesheet" href="{{ asset('/plugins/datepicker/datepicker3.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap-fancyfile.css') }}">
 @endsection
 
 @section('scripts')
@@ -296,10 +296,10 @@
         html += '                   </div>';
         html += '               </div>';
         html += '               <div class="form-group col-md-6 required">';
-        html += '                   {!! Form::label('account_id', trans_choice('general.accounts', 1), ['class' => 'control-label']) !!}';
+        html += '                   {!! Form::label('bankaccount_id', trans_choice('general.accounts', 1), ['class' => 'control-label']) !!}';
         html += '                   <div class="input-group">';
         html += '                       <div class="input-group-addon"><i class="fa fa-university"></i></div>';
-        html += '                       {!! Form::select('account_id', $accounts, setting('general.default_account'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('general.form.select.field', ['field' => trans_choice('general.accounts', 1)])]) !!}';
+        html += '                       {!! Form::select('bankaccount_id', $accounts, setting('general.default_account'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('general.form.select.field', ['field' => trans_choice('general.accounts', 1)])]) !!}';
         html += '                   </div>';
         html += '               </div>';
         html += '               <div class="form-group col-md-6 required">';
@@ -432,8 +432,8 @@
               $('#payment-modal #amount').parent().after('<p class="help-block">' + errors.amount + '</p>');
             }
 
-            if (errors.account_id) {
-              $('#payment-modal #account_id').parent().after('<p class="help-block">' + errors.account_id + '</p>');
+            if (errors.bankaccount_id) {
+              $('#payment-modal #account_id').parent().after('<p class="help-block">' + errors.bankaccount_id + '</p>');
             }
 
             if (errors.currency_code) {

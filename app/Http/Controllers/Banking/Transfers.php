@@ -30,8 +30,8 @@ class Transfers extends Controller
             $payment = $item->payment;
             $revenue = $item->revenue;
             $transfers[] = (object)[
-              'from_account' => $payment->account->name,
-              'to_account' => $revenue->account->name,
+              'from_account' => $payment->bankaccount->name,
+              'to_account' => $revenue->bankaccount->name,
               'amount' => $payment->amount,
               'currency_code' => $payment->currency_code,
               'paid_at' => $payment->paid_at,
@@ -80,7 +80,7 @@ class Transfers extends Controller
         $currencies = Currency::enabled()->pluck('rate', 'code')->toArray();
         $payment_currency_code = Account::where('id', $request['from_account_id'])->pluck('currency_code')->first();
         $revenue_currency_code = Account::where('id', $request['to_account_id'])->pluck('currency_code')->first();
-        $request['account_id'] = $request['from_account_id'];
+        $request['bankaccount_id'] = $request['from_account_id'];
         $request['paid_at'] = $request['transferred_at'];
         // amount
         $request['currency_code'] = $payment_currency_code;
@@ -98,7 +98,7 @@ class Transfers extends Controller
         $transfer->currency_code = $revenue_currency_code;
         $transfer->currency_rate = $currencies[$revenue_currency_code];
         $amount = $transfer->getDynamicConvertedAmount();
-        $request['account_id'] = $request['to_account_id'];
+        $request['bankaccount_id'] = $request['to_account_id'];
         // paid_at
         $request['amount'] = $amount;
         $request['currency_code'] = $revenue_currency_code;
@@ -129,8 +129,8 @@ class Transfers extends Controller
     {
         $payment = Payment::findOrFail($request['payment_id']);
         $revenue = Revenue::findOrFail($request['revenue_id']);
-        $transfer['from_account_id'] = $payment->account_id;
-        $transfer['to_account_id'] = $revenue->account_id;
+        $transfer['from_account_id'] = $payment->bankaccount_id;
+        $transfer['to_account_id'] = $revenue->bankaccount_id;
         $transfer['transferred_at'] = $revenue->deposited_at;
         $transfer['description'] = $revenue->description;
         $transfer['amount'] = $revenue->amount;
@@ -155,7 +155,7 @@ class Transfers extends Controller
         $payment_currency_code = Account::where('id', $request['from_account_id'])->pluck('currency_code')->first();
         $revenue_currency_code = Account::where('id', $request['to_account_id'])->pluck('currency_code')->first();
         $payment = Payment::findOrFail($transfer->payment_id);
-        $request['account_id'] = $request['from_account_id'];
+        $request['bankaccount_id'] = $request['from_account_id'];
         $request['paid_at'] = $request['transferred_at'];
         // amount
         $request['currency_code'] = $payment_currency_code;
@@ -174,7 +174,7 @@ class Transfers extends Controller
         $transfer->currency_code = $revenue_currency_code;
         $transfer->currency_rate = $currencies[$revenue_currency_code];
         $amount = $transfer->getDynamicConvertedAmount();
-        $request['account_id'] = $request['to_account_id'];
+        $request['bankaccount_id'] = $request['to_account_id'];
         // paid_at
         $request['amount'] = $amount;
         $request['currency_code'] = $revenue_currency_code;

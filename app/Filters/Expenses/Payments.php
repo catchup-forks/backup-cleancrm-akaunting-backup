@@ -30,6 +30,6 @@ class Payments extends ModelFilter
 
     public function account($account)
     {
-        return $this->where('account_id', $account);
+        return $this->where('bankaccount_id', $account);
     }
 }

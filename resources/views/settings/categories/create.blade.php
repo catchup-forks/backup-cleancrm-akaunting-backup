@@ -35,12 +35,12 @@
 @endsection
 
 @section('js')
-  <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/colorpicker/bootstrap-colorpicker.js') }}"></script>
+  <script src="{{ asset('/plugins/colorpicker/bootstrap-colorpicker.js') }}"></script>
 @endsection
 
 @section('css')
   <link rel="stylesheet"
-        href="{{ asset('vendor/almasaeed2010/adminlte/plugins/colorpicker/bootstrap-colorpicker.css') }}">
+        href="{{ asset('/plugins/colorpicker/bootstrap-colorpicker.css') }}">
 @endsection
 
 @section('scripts')

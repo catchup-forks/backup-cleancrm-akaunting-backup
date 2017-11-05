@@ -39,7 +39,7 @@
         @foreach($transactions as $item)
           <tr>
             <td>{{ Date::parse($item->paid_at)->format($date_format) }}</td>
-            <td>{{ $item->account_name }}</td>
+            <td>{{ $item->bankaccount_name }}</td>
             <td>{{ $item->type }}</td>
             <td>{{ $item->category_name }}</td>
             <td>{{ $item->description }}</td>

@@ -18,7 +18,7 @@ class User extends Authenticatable
 {
     use Filterable, LaratrustUserTrait, Notifiable, SoftDeletes, Sortable;
 
-    protected $table = 'users';
+    protected $table = 'staff';
 
     /**
      * The attributes that are mass assignable.
@@ -50,12 +50,12 @@ class User extends Authenticatable
 
     public function companies()
     {
-        return $this->morphToMany('App\Models\Company\Company', 'user', 'user_companies', 'user_id', 'company_id');
+        return $this->morphToMany('App\Models\Company\Company', 'user', 'user_companies', 'staff_id', 'company_id');
     }
 
     public function customer()
     {
-        return $this->hasOne('App\Models\Income\Customer', 'user_id', 'id');
+        return $this->hasOne('App\Models\Income\Customer', 'staff_id', 'id');
     }
 
     public function invoices()

@@ -13,7 +13,7 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
+            $table->unsignedInteger('company_id');
             $table->string('invoice_number');
             $table->string('order_number')->nullable();
             $table->string('invoice_status_code');
@@ -37,7 +37,7 @@ class CreateInvoicesTable extends Migration
         });
         Schema::create('invoice_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
+            $table->unsignedInteger('company_id');
             $table->integer('invoice_id');
             $table->integer('item_id')->nullable();
             $table->string('name');
@@ -53,7 +53,7 @@ class CreateInvoicesTable extends Migration
         });
         Schema::create('invoice_statuses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
+            $table->unsignedInteger('company_id');
             $table->string('name');
             $table->string('code');
             $table->timestamps();
@@ -62,9 +62,9 @@ class CreateInvoicesTable extends Migration
         });
         Schema::create('invoice_payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
+            $table->unsignedInteger('company_id');
             $table->integer('invoice_id');
-            $table->integer('account_id');
+            $table->integer('bankaccount_id');
             $table->date('paid_at');
             $table->double('amount', 15, 4);
             $table->string('currency_code');
@@ -79,7 +79,7 @@ class CreateInvoicesTable extends Migration
         });
         Schema::create('invoice_histories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
+            $table->unsignedInteger('company_id');
             $table->integer('invoice_id');
             $table->string('status_code');
             $table->boolean('notify');

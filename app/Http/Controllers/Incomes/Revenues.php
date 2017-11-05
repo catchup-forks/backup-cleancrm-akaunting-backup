@@ -87,7 +87,7 @@ class Revenues extends Controller
     {
         $accounts = Account::enabled()->pluck('name', 'id');
         $currencies = Currency::enabled()->pluck('name', 'code')->toArray();
-        $account_currency_code = Account::where('id', $revenue->account_id)->pluck('currency_code')->first();
+        $account_currency_code = Account::where('id', $revenue->bankaccount_id)->pluck('currency_code')->first();
         $customers = Customer::enabled()->pluck('name', 'id');
         $categories = Category::enabled()->type('income')->pluck('name', 'id');
         $payment_methods = Modules::getPaymentMethods();

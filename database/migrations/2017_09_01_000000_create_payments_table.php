@@ -13,8 +13,8 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
-            $table->integer('account_id');
+            $table->unsignedInteger('company_id');
+            $table->integer('bankaccount_id');
             $table->date('paid_at');
             $table->double('amount', 15, 4);
             $table->string('currency_code');

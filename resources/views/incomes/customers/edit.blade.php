@@ -32,7 +32,7 @@
       {!! Form::label('create_user', trans('general.create_user'), ['class' => 'control-label']) !!}
       <br/>
       <div class="col-md-12">
-        @if ($customer->user_id)
+        @if ($customer->staff_id)
           {{ Form::checkbox('create_user', '1', 1, array('disabled')) }} &nbsp; {{ trans('general.created_user') }}
         @else
           {{ Form::checkbox('create_user', '1') }} &nbsp; {{ trans('general.create_user') }}
@@ -58,11 +58,11 @@
 @endsection
 
 @section('js')
-  <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/iCheck/icheck.min.js') }}"></script>
+  <script src="{{ asset('/plugins/iCheck/icheck.min.js') }}"></script>
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/plugins/iCheck/square/green.css') }}">
+  <link rel="stylesheet" href="{{ asset('/plugins/iCheck/square/green.css') }}">
 @endsection
 
 @section('scripts')

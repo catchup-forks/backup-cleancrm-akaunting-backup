@@ -44,7 +44,7 @@ class Customers extends Controller
         $customer = Customer::create($request->all());
         if (!empty($request->input('create_user'))) {
             $user = User::create($request->input());
-            $request['user_id'] = $user->id;
+            $request['staff_id'] = $user->id;
             $request['roles'] = array('3');
             $request['companies'] = array(session('company_id'));
             // Attach roles
@@ -84,7 +84,7 @@ class Customers extends Controller
         $customer->update($request->all());
         if (!empty($request->input('create_user'))) {
             $user = User::create($request->input());
-            $request['user_id'] = $user->id;
+            $request['staff_id'] = $user->id;
             $request['roles'] = array('3');
             $request['companies'] = array(session('company_id'));
             // Attach roles

@@ -17,7 +17,7 @@
 
     {{ Form::textGroup('amount', trans('general.amount'), 'money', ['required' => 'required', 'autofocus' => 'autofocus']) }}
 
-    {{ Form::selectGroup('account_id', trans_choice('general.accounts', 1), 'university', $accounts, setting('general.default_account')) }}
+    {{ Form::selectGroup('bankaccount_id', trans_choice('general.accounts', 1), 'university', $accounts, setting('general.default_account')) }}
 
     <div class="form-group col-md-6 {{ $errors->has('currency_code') ? 'has-error' : ''}}">
       {!! Form::label('currency_code', trans_choice('general.currencies', 1), ['class' => 'control-label']) !!}
@@ -55,13 +55,13 @@
 @endsection
 
 @section('js')
-  <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
-  <script src="{{ asset('public/js/bootstrap-fancyfile.js') }}"></script>
+  <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+  <script src="{{ asset('js/bootstrap-fancyfile.js') }}"></script>
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/plugins/datepicker/datepicker3.css') }}">
-  <link rel="stylesheet" href="{{ asset('public/css/bootstrap-fancyfile.css') }}">
+  <link rel="stylesheet" href="{{ asset('/plugins/datepicker/datepicker3.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap-fancyfile.css') }}">
 @endsection
 
 @section('scripts')

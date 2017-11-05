@@ -140,14 +140,14 @@
 @endsection
 
 @section('js')
-  <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
-  <script src="{{ asset('public/js/bootstrap-fancyfile.js') }}"></script>
+  <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+  <script src="{{ asset('js/bootstrap-fancyfile.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/plugins/datepicker/datepicker3.css') }}">
-  <link rel="stylesheet" href="{{ asset('public/css/bootstrap-fancyfile.css') }}">
+  <link rel="stylesheet" href="{{ asset('/plugins/datepicker/datepicker3.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap-fancyfile.css') }}">
 @endsection
 
 @section('scripts')

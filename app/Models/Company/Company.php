@@ -126,7 +126,7 @@ class Company extends Eloquent
 
     public function users()
     {
-        return $this->morphedByMany('App\Models\Auth\User', 'user', 'user_companies', 'company_id', 'user_id');
+        return $this->morphedByMany('App\Models\Auth\User', 'user', 'user_companies', 'company_id', 'staff_id');
     }
 
     public function vendors()

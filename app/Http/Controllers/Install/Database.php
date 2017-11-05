@@ -68,7 +68,7 @@ class Database extends Controller
 
     private function saveVariables($request)
     {
-        $prefix = strtolower(str_random(3) . '_');
+        $prefix = NULL;
         // Save to file
         DotenvEditor::setKeys([
           [
@@ -89,7 +89,7 @@ class Database extends Controller
           ],
           [
             'key' => 'DB_PREFIX',
-            'value' => $prefix,
+            'value' => NULL,
           ],
         ])->save();
         $con = env('DB_CONNECTION', 'mysql');

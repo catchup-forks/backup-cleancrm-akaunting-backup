@@ -19,7 +19,7 @@ class Payment extends Model
      */
     protected $fillable = [
       'company_id',
-      'account_id',
+      'bankaccount_id',
       'paid_at',
       'amount',
       'currency_code',

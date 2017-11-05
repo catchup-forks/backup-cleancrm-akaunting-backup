@@ -5,7 +5,7 @@
     <div class="user-panel">
       <div class="pull-left image">
         <img
-          src="{{ setting('general.company_logo') ? Storage::url(setting('general.company_logo')) : asset('public/img/company.png') }}"
+          src="{{ setting('general.company_logo') ? Storage::url(setting('general.company_logo')) : asset('img/company.png') }}"
           class="img-circle" alt="@setting('general.company_name')">
       </div>
       <div class="pull-left info">

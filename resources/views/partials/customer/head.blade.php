@@ -7,31 +7,31 @@
   <title>@yield('title') - @setting('general.company_name')</title>
 
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="{{ asset('public/css/ionicons.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/dist/css/AdminLTE.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('/dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins -->
   @if (setting('general.admin_theme', 'skin-green-light') == 'skin-green-light')
-    <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/dist/css/skins/skin-green-light.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/dist/css/skins/skin-green-light.min.css') }}">
   @else
-    <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/dist/css/skins/skin-black.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/css/skin-black.css') }}">
+    <link rel="stylesheet" href="{{ asset('/dist/css/skins/skin-black.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/skin-black.css') }}">
     @endif
       <!-- Data Tables -->
     <link rel="stylesheet"
-          href="{{ asset('vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.css') }}">
+          href="{{ asset('/plugins/datatables/dataTables.bootstrap.css') }}">
     <!-- App style -->
-    <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/css/akaunting-green.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/akaunting-green.css') }}">
 
     <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/plugins/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/plugins/select2/select2.min.css') }}">
 
-    <link rel="shortcut icon" href="{{ asset('public/img/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
 
     @yield('css')
 
@@ -45,23 +45,23 @@
     <![endif]-->
 
     <!-- jQuery 2.2.3 -->
-    <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+    <script src="{{ asset('/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
     <!-- Bootstrap 3.3.6 -->
-    <script src="{{ asset('vendor/almasaeed2010/adminlte/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
     <!-- SlimScroll -->
-    <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
     <!-- FastClick -->
-    <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/fastclick/fastclick.js') }}"></script>
+    <script src="{{ asset('/plugins/fastclick/fastclick.js') }}"></script>
     <!-- Data Tables -->
-    <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('vendor/almasaeed2010/adminlte/dist/js/app.min.js') }}"></script>
+    <script src="{{ asset('/dist/js/app.min.js') }}"></script>
 
     <!-- Select2 -->
-    <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('/plugins/select2/select2.min.js') }}"></script>
 
-    <script src="{{ asset('public/js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <script type="text/javascript"><!--
       var url_search = '{{ url("search/search/search") }}';

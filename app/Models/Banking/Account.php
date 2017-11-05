@@ -8,7 +8,7 @@ class Account extends Model
 {
     use Eloquence;
 
-    protected $table = 'accounts';
+    protected $table = 'bankaccounts';
 
     /**
      * The accessors to append to the model's array form.

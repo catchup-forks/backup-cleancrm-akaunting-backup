@@ -90,11 +90,11 @@ return [
       /**
        * Role - User intermediate table.
        */
-    'role_user' => 'user_roles',
+    'role_user' => 'staff_roles',
       /**
        * Permission - User intermediate table.
        */
-    'permission_user' => 'user_permissions',
+    'permission_user' => 'staff_permissions',
       /**
        * Permission - Role intermediate table.
        */
@@ -112,7 +112,7 @@ return [
       /**
        * User foreign key on Laratrust's role_user and permission_user tables.
        */
-    'user' => 'user_id',
+    'user' => 'staff_id',
       /**
        * Role foreign key on Laratrust's role_user and permission_role tables.
        */
