@@ -61,8 +61,8 @@ class Accounts extends Controller
     public function edit(Account $account)
     {
         $currencies = Currency::enabled()->pluck('name', 'code');
-        $account->default_account = ($account->id == setting('general.default_account')) ?: 1;
-        return view('banking.accounts.edit', compact('account', 'currencies'));
+        $bankaccount->default_account = ($account->id == setting('general.default_account')) ?: 1;
+        return view('banking.accounts.edit', compact('bankaccount', 'currencies'));
     }
 
     /**

@@ -12,7 +12,7 @@ class Payment extends TransformerAbstract
     /**
      * @var array
      */
-    protected $defaultIncludes = ['account', 'vendor', 'category'];
+    protected $defaultIncludes = ['bankaccount', 'vendor', 'category'];
 
     /**
      * @param  Model $model

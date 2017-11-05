@@ -37,7 +37,7 @@ class Payment extends Model
      *
      * @var array
      */
-    public $sortable = ['paid_at', 'amount', 'category.name', 'account.name'];
+    public $sortable = ['paid_at', 'amount', 'category.name', 'bankaccount.name'];
 
     /**
      * Searchable rules.
@@ -45,13 +45,13 @@ class Payment extends Model
      * @var array
      */
     protected $searchableColumns = [
-      'accounts.name',
+      'bankaccounts.name',
       'categories.name',
       'vendors.name',
       'description',
     ];
 
-    public function account()
+    public function bankaccount()
     {
         return $this->belongsTo('App\Models\Banking\Account');
     }

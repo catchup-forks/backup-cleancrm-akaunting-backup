@@ -1,42 +1,36 @@
 {
-  "name": "akaunting/akaunting",
+  "name": "laravel/laravel",
   "description": "Free accounting software, based on Laravel framework.",
-  "homepage": "https://akaunting.com",
-  "keywords": [
-    "laravel",
-    "accounting",
-    "software",
-    "online"
-  ],
+  "keywords": [],
   "license": "GPL-3.0+",
   "type": "project",
   "require": {
     "php": ">=5.6.4",
-    "akaunting/language": "1.0.*",
-    "akaunting/setting": "1.0.*",
-    "akaunting/version": "1.0.*",
-    "almasaeed2010/adminlte": "2.3.*",
-    "barryvdh/laravel-debugbar": "2.3.*",
+    "akaunting/language": "^1.0",
+    "akaunting/setting": "^1.0",
+    "akaunting/version": "^1.0",
+    "almasaeed2010/adminlte": "^2.4",
+    "barryvdh/laravel-debugbar": "^2.4",
     "barryvdh/laravel-dompdf": "0.*",
-    "barryvdh/laravel-ide-helper": "2.3.*",
-    "cebe/markdown": "1.1.*",
-    "cknow/laravel-money": "1.0.*",
+    "barryvdh/laravel-ide-helper": "^2.4",
+    "cebe/markdown": "^1.1",
+    "cknow/laravel-money": "^1.0",
     "dingo/api": "1.0.0-beta8",
-    "fzaninotto/faker": "1.6.*",
-    "guzzlehttp/guzzle": "6.3.*",
-    "intervention/image": "2.3.*",
-    "jackiedo/dotenv-editor": "1.*",
-    "jenssegers/date": "3.2.*",
-    "kyslik/column-sortable": "5.4.*",
-    "laracasts/flash": "3.0.*",
+    "fzaninotto/faker": "^1.7",
+    "guzzlehttp/guzzle": "^6.3",
+    "intervention/image": "^2.4",
+    "jackiedo/dotenv-editor": "^1.0",
+    "jenssegers/date": "^3.2",
+    "kyslik/column-sortable": "^5.4",
+    "laracasts/flash": "^3.0",
     "laravel/framework": "5.4.*",
-    "laravel/tinker": "~1.0",
-    "LaravelCollective/html": "5.4.*",
-    "nwidart/laravel-menus": "0.5.*",
-    "nwidart/laravel-modules": "1.*",
-    "santigarcor/laratrust": "4.0.*",
-    "sofa/eloquence": "5.4.*",
-    "tucker-eric/eloquentfilter": "1.1.*"
+    "laravel/tinker": "^1.0",
+    "laravelcollective/html": "^5.3",
+    "nwidart/laravel-menus": "^0.5",
+    "nwidart/laravel-modules": "^1.14",
+    "santigarcor/laratrust": "^4.0",
+    "sofa/eloquence": "^5.4",
+    "tucker-eric/eloquentfilter": "^1.2"
   },
   "autoload": {
     "classmap": [
@@ -45,7 +39,7 @@
     ],
     "psr-4": {
       "App\\": "app/",
-      "Modules\\": "modules/"
+      "Modules\\": "Modules/"
     }
   },
   "autoload-dev": {

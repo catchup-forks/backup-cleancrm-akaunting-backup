@@ -37,7 +37,7 @@ class Revenue extends Model
      *
      * @var array
      */
-    public $sortable = ['paid_at', 'amount', 'category_id', 'account', 'payment_method'];
+    public $sortable = ['paid_at', 'amount', 'category_id', 'bankaccount', 'payment_method'];
 
     /**
      * Searchable rules.
@@ -57,7 +57,7 @@ class Revenue extends Model
         return $this->belongsTo('App\Models\Auth\User', 'customer_id', 'id');
     }
 
-    public function account()
+    public function bankaccount()
     {
         return $this->belongsTo('App\Models\Banking\Account');
     }

@@ -10,7 +10,7 @@ class InvoicePayments extends TransformerAbstract
     /**
      * @var array
      */
-    protected $defaultIncludes = ['account'];
+    protected $defaultIncludes = ['bankaccount'];
 
     /**
      * @param Model $model

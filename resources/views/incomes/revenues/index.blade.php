@@ -19,7 +19,7 @@
         {!! Form::text('search', request('search'), ['class' => 'form-control input-filter input-sm', 'placeholder' => trans('general.search_placeholder')]) !!}
         {!! Form::select('customer', $customers, request('customer'), ['class' => 'form-control input-filter input-sm']) !!}
         {!! Form::select('category', $categories, request('category'), ['class' => 'form-control input-filter input-sm']) !!}
-        {!! Form::select('account', $bankaccounts, request('account'), ['class' => 'form-control input-filter input-sm']) !!}
+        {!! Form::select('bankaccount', $bankaccounts, request('bankaccount'), ['class' => 'form-control input-filter input-sm']) !!}
         {!! Form::button('<span class="fa fa-filter"></span> &nbsp;' . trans('general.filter'), ['type' => 'submit', 'class' => 'btn btn-sm btn-default btn-filter']) !!}
       </div>
       <div class="pull-right">
@@ -38,7 +38,7 @@
             <th class="col-md-2">@sortablelink('amount', trans('general.amount'))</th>
             <th class="col-md-3 hidden-xs">@sortablelink('customer.name', trans_choice('general.customers', 1))</th>
             <th class="col-md-2 hidden-xs">@sortablelink('category.name', trans_choice('general.categories', 1))</th>
-            <th class="col-md-2 hidden-xs">@sortablelink('account.name', trans_choice('general.bankaccounts', 1))</th>
+            <th class="col-md-2 hidden-xs">@sortablelink('bankaccount.name', trans_choice('general.bankaccounts', 1))</th>
             <th class="col-md-1 text-center">{{ trans('general.actions') }}</th>
           </tr>
           </thead>

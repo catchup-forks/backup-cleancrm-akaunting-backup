@@ -22,7 +22,7 @@ class Transfers extends Controller
     public function index()
     {
         $request = request();
-        $items = Transfer::with(['payment', 'revenue', 'account'])->collect('payment.paid_at');
+        $items = Transfer::with(['payment', 'revenue', 'bankaccount'])->collect('payment.paid_at');
         $bankaccounts = collect(Account::enabled()->pluck('name', 'id'))
           ->prepend(trans('general.all_type', ['type' => trans_choice('general.bankaccounts', 2)]), '');
         $transfers = array();

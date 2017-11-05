@@ -21,7 +21,7 @@ class Transaction extends Model
                         foreach ($bill_payments as $bill_payment) {
                             $transactions[] = (object)[
                               'date' => $bill_payment->paid_at,
-                              'account' => $bill_payment->bankaccount->name,
+                              'bankaccount' => $bill_payment->bankaccount->name,
                               'type' => trans('invoices.status.partial'),
                               'category' => trans_choice('general.invoices', 1),
                               'description' => $bill_payment->description,
@@ -35,7 +35,7 @@ class Transaction extends Model
                 foreach ($payments as $payment) {
                     $transactions[] = (object)[
                       'date' => $payment->paid_at,
-                      'account' => $payment->bankaccount->name,
+                      'bankaccount' => $payment->bankaccount->name,
                       'type' => 'Expense',
                       'category' => $payment->category->name,
                       'description' => $payment->description,
@@ -52,7 +52,7 @@ class Transaction extends Model
                         foreach ($invoice_payments as $invoice_payment) {
                             $transactions[] = (object)[
                               'date' => $invoice_payment->paid_at,
-                              'account' => $invoice_payment->bankaccount->name,
+                              'bankaccount' => $invoice_payment->bankaccount->name,
                               'type' => trans('invoices.status.partial'),
                               'category' => trans_choice('general.invoices', 1),
                               'description' => $invoice_payment->description,
@@ -66,7 +66,7 @@ class Transaction extends Model
                 foreach ($revenues as $revenue) {
                     $transactions[] = (object)[
                       'date' => $revenue->paid_at,
-                      'account' => $revenue->bankaccount->name,
+                      'bankaccount' => $revenue->bankaccount->name,
                       'type' => trans_choice('general.payments', 1),
                       'category' => $revenue->category->name,
                       'description' => $revenue->description,

@@ -12,7 +12,7 @@ class Revenue extends TransformerAbstract
     /**
      * @var array
      */
-    protected $defaultIncludes = ['account', 'customer', 'category'];
+    protected $defaultIncludes = ['bankaccount', 'customer', 'category'];
 
     /**
      * @param  Model $model

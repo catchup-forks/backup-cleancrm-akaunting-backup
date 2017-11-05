@@ -25,7 +25,7 @@
         <thead>
         <tr>
           <th>@sortablelink('paid_at', trans('general.date'))</th>
-          <th>@sortablelink('account.name', trans('accounts.account_name'))</th>
+          <th>@sortablelink('bankaccount.name', trans('bankaccounts.account_name'))</th>
           <th>@sortablelink('type', trans_choice('general.types', 1))</th>
           <th>@sortablelink('category.name', trans_choice('general.categories', 1))</th>
           <th>@sortablelink('description', trans('general.description'))</th>

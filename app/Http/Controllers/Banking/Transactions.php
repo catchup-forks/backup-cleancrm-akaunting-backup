@@ -32,7 +32,7 @@ class Transactions extends Controller
             foreach ($payments as $payment) {
                 $transactions[] = (object)[
                   'paid_at' => $payment->paid_at,
-                  'account_name' => $payment->bankaccount->name,
+                  'bankaccount_name' => $payment->bankaccount->name,
                   'type' => trans_choice('general.expenses', 1),
                   'category_name' => $payment->category->name,
                   'description' => $payment->description,
@@ -46,7 +46,7 @@ class Transactions extends Controller
             foreach ($revenues as $revenue) {
                 $transactions[] = (object)[
                   'paid_at' => $revenue->paid_at,
-                  'account_name' => $revenue->bankaccount->name,
+                  'bankaccount_name' => $revenue->bankaccount->name,
                   'type' => trans_choice('general.incomes', 1),
                   'category_name' => $revenue->category->name,
                   'description' => $revenue->description,
@@ -56,7 +56,7 @@ class Transactions extends Controller
             }
         }
         $special_key = array(
-          'account.name' => 'account_name',
+          'bankaccount.name' => 'bankaccount_name',
           'category.name' => 'category_name',
         );
         if (isset($request['sort']) && array_key_exists($request['sort'], $special_key)) {
@@ -72,6 +72,7 @@ class Transactions extends Controller
             array_multisort($sort_order, $sort_type, $transactions);
         }
         $transactions = (object)$transactions;
+        //dd($transactions);
         return view('banking.transactions.index', compact('transactions', 'bankaccounts', 'types', 'categories'));
     }
 }

@@ -32,7 +32,7 @@ class BillPayment extends Model
       'attachment'
     ];
 
-    public function account()
+    public function bankaccount()
     {
         return $this->belongsTo('App\Models\Banking\Account');
     }

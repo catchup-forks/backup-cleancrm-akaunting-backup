@@ -22,7 +22,7 @@ class Payments extends Controller
      */
     public function index()
     {
-        $payments = Payment::with(['vendor', 'account', 'category'])->collect();
+        $payments = Payment::with(['vendor', 'bankaccount', 'category'])->collect();
         $vendors = collect(Vendor::enabled()->pluck('name', 'id'))
           ->prepend(trans('general.all_type', ['type' => trans_choice('general.vendors', 2)]), '');
         $categories = collect(Category::enabled()->type('expense')->pluck('name', 'id'))

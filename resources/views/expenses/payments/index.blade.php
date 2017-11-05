@@ -19,7 +19,7 @@
         {!! Form::text('search', request('search'), ['class' => 'form-control input-filter input-sm', 'placeholder' => trans('general.search_placeholder')]) !!}
         {!! Form::select('vendor', $vendors, request('vendor'), ['class' => 'form-control input-filter input-sm']) !!}
         {!! Form::select('category', $categories, request('category'), ['class' => 'form-control input-filter input-sm']) !!}
-        {!! Form::select('account', $bankaccounts, request('account'), ['class' => 'form-control input-filter input-sm']) !!}
+        {!! Form::select('bankaccount', $bankaccounts, request('account'), ['class' => 'form-control input-filter input-sm']) !!}
         {!! Form::button('<span class="fa fa-filter"></span> &nbsp;' . trans('general.filter'), ['type' => 'submit', 'class' => 'btn btn-sm btn-default btn-filter']) !!}
       </div>
       <div class="pull-right">

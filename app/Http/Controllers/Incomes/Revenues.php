@@ -24,7 +24,8 @@ class Revenues extends Controller
      */
     public function index()
     {
-        $revenues = Revenue::with(['account', 'category', 'customer'])->collect();
+        $revenues = Revenue::with(['bankaccount', 'category', 'customer'])->collect();
+
         $customers = collect(Customer::enabled()->pluck('name', 'id'))
           ->prepend(trans('general.all_type', ['type' => trans_choice('general.customers', 2)]), '');
         $categories = collect(Category::enabled()->type('income')->pluck('name', 'id'))

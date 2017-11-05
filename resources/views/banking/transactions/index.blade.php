@@ -9,7 +9,7 @@
     {!! Form::open(['url' => 'banking/transactions', 'role' => 'form', 'method' => 'GET']) !!}
     <div class="pull-left">
       <span class="title-filter hidden-xs">{{ trans('general.search') }}:</span>
-      {!! Form::select('account', $bankaccounts, request('account'), ['class' => 'form-control input-filter input-sm']) !!}
+      {!! Form::select('bankaccount', $bankaccounts, request('account'), ['class' => 'form-control input-filter input-sm']) !!}
       {!! Form::select('type', $types, request('type'), ['class' => 'form-control input-filter input-sm']) !!}
       {!! Form::select('category', $categories, request('category'), ['class' => 'form-control input-filter input-sm']) !!}
       {!! Form::button('<span class="fa fa-filter"></span> &nbsp;' . trans('general.filter'), ['type' => 'submit', 'class' => 'btn btn-sm btn-default btn-filter']) !!}
@@ -22,13 +22,20 @@
   </div>
   <!-- /.box-header -->
 
+
+{{--@php
+  dd($transactions);
+
+  @endphp--}}
+
+
   <div class="box-body">
     <div class="table table-responsive">
       <table class="table table-striped table-hover" id="tbl-transactions">
         <thead>
         <tr>
           <th class="col-md-2">@sortablelink('paid_at', trans('general.date'))</th>
-          <th class="col-md-2">@sortablelink('account.name', trans('accounts.account_name'))</th>
+          <th class="col-md-2">@sortablelink('bankaccount.name', trans('bankaccounts.bankaccount_name'))</th>
           <th class="col-md-2">@sortablelink('type', trans_choice('general.types', 1))</th>
           <th class="col-md-2">@sortablelink('category.name', trans_choice('general.categories', 1))</th>
           <th class="col-md-2">@sortablelink('description', trans('general.description'))</th>

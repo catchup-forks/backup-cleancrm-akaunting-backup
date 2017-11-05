@@ -28,8 +28,8 @@ class Revenues extends ModelFilter
         return $this->where('category_id', $category);
     }
 
-    public function account($account)
+    public function bankaccount($bankaccount)
     {
-        return $this->where('bankaccount_id', $account);
+        return $this->where('bankaccount_id', $bankaccount);
     }
 }

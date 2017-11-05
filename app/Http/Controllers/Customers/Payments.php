@@ -18,7 +18,7 @@ class Payments extends Controller
      */
     public function index()
     {
-        $payments = Payment::with(['account', 'category'])->where('customer_id', '=',
+        $payments = Payment::with(['bankaccount', 'category'])->where('customer_id', '=',
           Auth::user()->customer->id)->paginate();
         $payment_methods = Modules::getPaymentMethods();
         $categories = collect(Category::enabled()->type('income')->pluck('name', 'id'))

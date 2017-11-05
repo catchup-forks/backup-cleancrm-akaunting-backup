@@ -22,7 +22,7 @@ class Currency extends Model
      */
     public $sortable = ['name', 'code', 'rate', 'enabled'];
 
-    public function accounts()
+    public function bankaccounts()
     {
         return $this->hasMany('App\Models\Banking\Account', 'currency_code', 'code');
     }

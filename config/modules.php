@@ -22,7 +22,7 @@ return [
     'path' => base_path() . '/app/Console/Stubs/Modules',
     'files' => [
       'start' => 'start.php',
-      'routes' => 'Http/routes.php',
+      'routes' => 'Routes/routes.php',
       'views/index' => 'Resources/views/index.blade.php',
       'views/master' => 'Resources/views/layouts/master.blade.php',
       'scaffold/config' => 'Config/config.php',
@@ -55,7 +55,7 @@ return [
       | automatically to list of scanned folders.
       |
       */
-    'modules' => base_path('modules'),
+    'modules' => base_path('Modules'),
       /*
       |--------------------------------------------------------------------------
       | Modules assets path
@@ -90,7 +90,7 @@ return [
       'event' => 'Events',
       'listener' => 'Events/Handlers',
       'migration' => 'Database/Migrations',
-      'model' => 'Entities',
+      'model' => 'Models',
       'repository' => 'Repositories',
       'seeder' => 'Database/Seeders',
       'controller' => 'Http/Controllers',

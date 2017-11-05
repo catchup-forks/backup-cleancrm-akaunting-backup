@@ -24,7 +24,7 @@ class Company extends Eloquent
      */
     public $sortable = ['name', 'domain', 'email', 'enabled', 'created_at'];
 
-    public function accounts()
+    public function bankaccounts()
     {
         return $this->hasMany('App\Models\Banking\Account');
     }

@@ -18,7 +18,7 @@ return [
         'type',
         'status',
         'vendor',
-        'account'
+        'bankaccount'
       ],
       'class' => 'fa fa-sort-alpha',
     ],

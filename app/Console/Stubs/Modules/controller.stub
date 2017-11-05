@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller;
 class $CLASS$ extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing.
      * @return Response
      */
     public function index()
@@ -18,7 +18,7 @@ class $CLASS$ extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the create form.
      * @return Response
      */
     public function create()
@@ -27,7 +27,7 @@ class $CLASS$ extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store in database.
      * @param  Request $request
      * @return Response
      */
@@ -36,7 +36,7 @@ class $CLASS$ extends Controller
     }
 
     /**
-     * Show the specified resource.
+     * Show.
      * @return Response
      */
     public function show()
@@ -45,7 +45,7 @@ class $CLASS$ extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the editing form.
      * @return Response
      */
     public function edit()
@@ -54,7 +54,7 @@ class $CLASS$ extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update in database.
      * @param  Request $request
      * @return Response
      */
@@ -63,7 +63,7 @@ class $CLASS$ extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove from database.
      * @return Response
      */
     public function destroy()
