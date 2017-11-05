@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api\Incomes;
 
 use App\Http\Controllers\ApiController;
@@ -20,14 +19,13 @@ class Revenues extends ApiController
     public function index()
     {
         $revenues = Revenue::with(['account', 'customer', 'category'])->collect();
-
         return $this->response->paginator($revenues, new Transformer());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  Revenue  $revenue
+     * @param  Revenue $revenue
      * @return \Dingo\Api\Http\Response
      */
     public function show(Revenue $revenue)
@@ -44,8 +42,7 @@ class Revenues extends ApiController
     public function store(Request $request)
     {
         $revenue = Revenue::create($request->all());
-
-        return $this->response->created(url('api/revenues/'.$revenue->id));
+        return $this->response->created(url('api/revenues/' . $revenue->id));
     }
 
     /**
@@ -58,20 +55,18 @@ class Revenues extends ApiController
     public function update(Revenue $revenue, Request $request)
     {
         $revenue->update($request->all());
-
         return $this->response->item($revenue->fresh(), new Transformer());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Revenue  $revenue
+     * @param  Revenue $revenue
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Revenue $revenue)
     {
         $revenue->delete();
-
         return $this->response->noContent();
     }
 }

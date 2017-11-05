@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests\Module;
 
 use App\Http\Requests\Request;
@@ -24,7 +23,7 @@ class Module extends Request
     public function rules()
     {
         return [
-            'api_token' => 'required|string',
+          'api_token' => 'required|string',
         ];
     }
 }

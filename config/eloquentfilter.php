@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     /*
      |--------------------------------------------------------------------------
      | Eloquent Filter Settings
@@ -10,7 +8,5 @@ return [
      | This is the namespace all you Eloquent Model Filters will reside
      |
      */
-
-    'namespace' => 'App\\Filters\\',
-
+  'namespace' => 'App\\Filters\\',
 ];

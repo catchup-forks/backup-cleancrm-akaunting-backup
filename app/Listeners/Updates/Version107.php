@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Listeners\Updates;
 
 use App\Events\UpdateFinished;
@@ -23,9 +22,7 @@ class Version107 extends Listener
         if (!$this->check($event)) {
             return;
         }
-
         $table = env('DB_PREFIX') . 'taxes';
-
         DB::statement("ALTER TABLE `$table` MODIFY `rate` DOUBLE(15,4) NOT NULL");
     }
 }

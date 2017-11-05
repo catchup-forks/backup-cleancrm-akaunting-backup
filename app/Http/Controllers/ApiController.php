@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Dingo\Api\Exception\ResourceException;
@@ -19,7 +18,7 @@ class ApiController extends Controller
         if ($request->expectsJson()) {
             throw new ResourceException('Validation Error', $errors);
         }
-
-        return redirect()->to($this->getRedirectUrl())->withInput($request->input())->withErrors($errors, $this->errorBag());
+        return redirect()->to($this->getRedirectUrl())->withInput($request->input())->withErrors($errors,
+          $this->errorBag());
     }
 }

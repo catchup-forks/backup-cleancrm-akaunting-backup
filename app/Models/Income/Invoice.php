@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Income;
 
 use App\Models\Model;
@@ -20,14 +19,32 @@ class Invoice extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_id', 'invoice_number', 'order_number', 'invoice_status_code', 'invoiced_at', 'due_at', 'amount', 'currency_code', 'currency_rate', 'customer_id', 'customer_name', 'customer_email', 'customer_tax_number', 'customer_phone', 'customer_address', 'notes', 'attachment'];
+    protected $fillable = [
+      'company_id',
+      'invoice_number',
+      'order_number',
+      'invoice_status_code',
+      'invoiced_at',
+      'due_at',
+      'amount',
+      'currency_code',
+      'currency_rate',
+      'customer_id',
+      'customer_name',
+      'customer_email',
+      'customer_tax_number',
+      'customer_phone',
+      'customer_address',
+      'notes',
+      'attachment'
+    ];
 
     /**
      * Sortable columns.
      *
      * @var array
      */
-    public $sortable = ['invoice_number', 'customer_name', 'amount', 'status' , 'invoiced_at', 'due_at'];
+    public $sortable = ['invoice_number', 'customer_name', 'amount', 'status', 'invoiced_at', 'due_at'];
 
     /**
      * Searchable rules.
@@ -35,13 +52,13 @@ class Invoice extends Model
      * @var array
      */
     protected $searchableColumns = [
-        'invoice_number'   => 10,
-        'order_number'     => 10,
-        'customer_name'    => 10,
-        'customer_email'   => 5,
-        'customer_phone'   => 2,
-        'customer_address' => 1,
-        'notes'            => 2,
+      'invoice_number' => 10,
+      'order_number' => 10,
+      'customer_name' => 10,
+      'customer_email' => 5,
+      'customer_phone' => 2,
+      'customer_address' => 1,
+      'notes' => 2,
     ];
 
     public function user()
@@ -87,23 +104,23 @@ class Invoice extends Model
     /**
      * Convert amount to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setAmountAttribute($value)
     {
-        $this->attributes['amount'] = (double) $value;
+        $this->attributes['amount'] = (double)$value;
     }
 
     /**
      * Convert currency rate to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setCurrencyRateAttribute($value)
     {
-        $this->attributes['currency_rate'] = (double) $value;
+        $this->attributes['currency_rate'] = (double)$value;
     }
 
     public function scopeDue($query, $date)

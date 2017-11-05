@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Install;
 
 use Session;
@@ -21,7 +20,7 @@ class Language extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  Request $request
      *
      * @return Response
      */
@@ -29,7 +28,6 @@ class Language extends Controller
     {
         // Set locale
         Session::put('locale', $request['lang']);
-
         return redirect('install/database');
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Expense;
 
 use App\Models\Model;
@@ -16,7 +15,17 @@ class Vendor extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_id', 'name', 'email', 'tax_number', 'phone', 'address', 'website', 'currency_code', 'enabled'];
+    protected $fillable = [
+      'company_id',
+      'name',
+      'email',
+      'tax_number',
+      'phone',
+      'address',
+      'website',
+      'currency_code',
+      'enabled'
+    ];
 
     /**
      * Sortable columns.
@@ -31,11 +40,11 @@ class Vendor extends Model
      * @var array
      */
     protected $searchableColumns = [
-        'name'    => 10,
-        'email'   => 5,
-        'phone'   => 2,
-        'website' => 2,
-        'address' => 1,
+      'name' => 10,
+      'email' => 5,
+      'phone' => 2,
+      'website' => 2,
+      'address' => 1,
     ];
 
     public function bills()

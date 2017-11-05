@@ -1,10 +1,8 @@
 <?php
-
 namespace Database\Seeds;
 
 use App\Models\Model;
 use App\Models\Expense\BillStatus;
-
 use Illuminate\Database\Seeder;
 
 class BillStatuses extends Seeder
@@ -17,39 +15,35 @@ class BillStatuses extends Seeder
     public function run()
     {
         Model::unguard();
-
         $this->create();
-
         Model::reguard();
     }
 
     private function create()
     {
         $company_id = $this->command->argument('company');
-
         $rows = [
-            [
-                'company_id' => $company_id,
-                'name' => trans('bills.status.new'),
-                'code' => 'new',
-            ],
-            [
-                'company_id' => $company_id,
-                'name' => trans('bills.status.updated'),
-                'code' => 'updated',
-            ],
-            [
-                'company_id' => $company_id,
-                'name' => trans('bills.status.partial'),
-                'code' => 'partial',
-            ],
-            [
-                'company_id' => $company_id,
-                'name' => trans('bills.status.paid'),
-                'code' => 'paid',
-            ],
+          [
+            'company_id' => $company_id,
+            'name' => trans('bills.status.new'),
+            'code' => 'new',
+          ],
+          [
+            'company_id' => $company_id,
+            'name' => trans('bills.status.updated'),
+            'code' => 'updated',
+          ],
+          [
+            'company_id' => $company_id,
+            'name' => trans('bills.status.partial'),
+            'code' => 'partial',
+          ],
+          [
+            'company_id' => $company_id,
+            'name' => trans('bills.status.paid'),
+            'code' => 'paid',
+          ],
         ];
-
         foreach ($rows as $row) {
             BillStatus::create($row);
         }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests\Income;
 
 use App\Http\Requests\Request;
@@ -24,12 +23,12 @@ class InvoicePayment extends Request
     public function rules()
     {
         return [
-            'account_id' => 'required|integer',
-            'paid_at' => 'required|date',
-            'amount' => 'required',
-            'currency_code' => 'required|string',
-            'payment_method' => 'required|string',
-            'attachment' => 'mimes:jpeg,jpg,png,pdf',
+          'account_id' => 'required|integer',
+          'paid_at' => 'required|date',
+          'amount' => 'required',
+          'currency_code' => 'required|string',
+          'payment_method' => 'required|string',
+          'attachment' => 'mimes:jpeg,jpg,png,pdf',
         ];
     }
 }

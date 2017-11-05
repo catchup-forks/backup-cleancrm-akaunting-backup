@@ -1,7 +1,5 @@
 <?php
-
 return array(
-
     /*
     |--------------------------------------------------------------------------
     | Image Driver
@@ -14,7 +12,5 @@ return array(
     | Supported: "gd", "imagick"
     |
     */
-
-    'driver' => 'gd'
-
+  'driver' => 'gd'
 );

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Events;
 
 class InvoiceUpdated

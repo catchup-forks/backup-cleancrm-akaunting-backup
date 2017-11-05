@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Transformers\Income;
 
 use App\Transformers\Banking\Account;
@@ -22,21 +21,21 @@ class Revenue extends TransformerAbstract
     public function transform(Model $model)
     {
         return [
-            'id' => $model->id,
-            'company_id' => $model->company_id,
-            'account_id' => $model->account_id,
-            'paid_at' => $model->paid_at->toIso8601String(),
-            'amount' => $model->amount,
-            'currency_code' => $model->currency_code,
-            'currency_rate' => $model->currency_rate,
-            'customer_id' => $model->customer_id,
-            'description' => $model->description,
-            'category_id' => $model->category_id,
-            'payment_method' => $model->payment_method,
-            'reference' => $model->reference,
-            'attachment' => $model->attachment,
-            'created_at' => $model->created_at->toIso8601String(),
-            'updated_at' => $model->updated_at->toIso8601String(),
+          'id' => $model->id,
+          'company_id' => $model->company_id,
+          'account_id' => $model->account_id,
+          'paid_at' => $model->paid_at->toIso8601String(),
+          'amount' => $model->amount,
+          'currency_code' => $model->currency_code,
+          'currency_rate' => $model->currency_rate,
+          'customer_id' => $model->customer_id,
+          'description' => $model->description,
+          'category_id' => $model->category_id,
+          'payment_method' => $model->payment_method,
+          'reference' => $model->reference,
+          'attachment' => $model->attachment,
+          'created_at' => $model->created_at->toIso8601String(),
+          'updated_at' => $model->updated_at->toIso8601String(),
         ];
     }
 
@@ -58,7 +57,6 @@ class Revenue extends TransformerAbstract
         if (!$model->customer) {
             return $this->null();
         }
-
         return $this->item($model->customer, new Customer());
     }
 

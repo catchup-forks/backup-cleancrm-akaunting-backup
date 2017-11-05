@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Event;
@@ -13,17 +12,17 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\UpdateFinished' => [
-            'App\Listeners\Updates\Version106',
-            'App\Listeners\Updates\Version107',
-            'App\Listeners\Updates\Version108',
-        ],
-        'Illuminate\Auth\Events\Login' => [
-            'App\Listeners\Auth\Login',
-        ],
-        'Illuminate\Auth\Events\Logout' => [
-            'App\Listeners\Auth\Logout',
-        ],
+      'App\Events\UpdateFinished' => [
+        'App\Listeners\Updates\Version106',
+        'App\Listeners\Updates\Version107',
+        'App\Listeners\Updates\Version108',
+      ],
+      'Illuminate\Auth\Events\Login' => [
+        'App\Listeners\Auth\Login',
+      ],
+      'Illuminate\Auth\Events\Logout' => [
+        'App\Listeners\Auth\Logout',
+      ],
     ];
 
     /**

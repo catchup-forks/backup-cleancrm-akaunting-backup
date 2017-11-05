@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\ViewComposers;
 
 use App\Models\Addon\Addon;
@@ -15,7 +14,7 @@ class Modules
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
+     * @param  View $view
      * @return void
      */
     public function compose(View $view)
@@ -23,14 +22,13 @@ class Modules
         if (setting('general.api_token')) {
             $categories = Cache::remember('modules.categories', Date::now()->addHour(6), function () {
                 return collect($this->getCategories())->pluck('name', 'slug')
-                    ->prepend(trans('general.all_type', ['type' => trans_choice('general.categories', 2)]), '');
+                  ->prepend(trans('general.all_type', ['type' => trans_choice('general.categories', 2)]), '');
             });
         } else {
             $categories = collect([
-                '' => trans('general.all_type', ['type' => trans_choice('general.categories', 2)]),
+              '' => trans('general.all_type', ['type' => trans_choice('general.categories', 2)]),
             ]);
         }
-
         $view->with(['categories' => $categories]);
     }
 }

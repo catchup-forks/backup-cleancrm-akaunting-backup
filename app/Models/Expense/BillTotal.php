@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Expense;
 
 use App\Models\Model;
@@ -26,11 +25,11 @@ class BillTotal extends Model
     /**
      * Convert amount to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setAmountAttribute($value)
     {
-        $this->attributes['amount'] = (double) $value;
+        $this->attributes['amount'] = (double)$value;
     }
 }

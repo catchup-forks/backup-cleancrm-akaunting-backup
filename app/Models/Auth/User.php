@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Auth;
 
 use App\Notifications\Auth\Reset;
@@ -85,17 +84,14 @@ class User extends Authenticatable
         // Check if we should use gravatar
         if (setting('general.use_gravatar', '0') == '1') {
             // Check for gravatar
-            $url = 'https://www.gravatar.com/avatar/' . md5(strtolower($this->getAttribute('email'))).'?size=90&d=404';
-
+            $url = 'https://www.gravatar.com/avatar/' . md5(strtolower($this->getAttribute('email'))) . '?size=90&d=404';
             $client = new \GuzzleHttp\Client(['verify' => false]);
-
             try {
                 $value = $client->request('GET', $url)->getBody()->getContents();
             } catch (RequestException $e) {
                 // 404 Not Found
             }
         }
-
         return $value;
     }
 
@@ -105,7 +101,6 @@ class User extends Authenticatable
     public function getLastLoggedInAtAttribute($value)
     {
         // Date::setLocale('tr');
-
         if (!empty($value)) {
             return Date::parse($value)->diffForHumans();
         } else {
@@ -152,15 +147,11 @@ class User extends Authenticatable
         } else {
             list($folder, $file) = explode('/', Route::current()->uri());
         }
-
         if (empty($folder) || empty($file)) {
             return $this->provideFilter();
         }
-
         //$class = '\App\Filters\Auth\Users';
-
         $class = '\App\Filters\\' . ucfirst($folder) . '\\' . ucfirst($file);
-
         return $this->provideFilter($class);
     }
 
@@ -175,10 +166,8 @@ class User extends Authenticatable
     public function scopeCollect($query, $sort = 'name')
     {
         $request = request();
-
         $input = $request->input();
         $limit = $request->get('limit', setting('general.list_limit', '25'));
-
         return $this->filter($input)->sortable($sort)->paginate($limit);
     }
 

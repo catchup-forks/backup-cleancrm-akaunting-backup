@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api\Banking;
 
 use App\Http\Controllers\ApiController;
@@ -22,14 +21,13 @@ class Transfers extends ApiController
     public function index()
     {
         $transfers = Transfer::with(['payment', 'revenue'])->collect('payment.paid_at');
-
         return $this->response->paginator($transfers, new Transformer());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  Transfer  $transfer
+     * @param  Transfer $transfer
      * @return \Dingo\Api\Http\Response
      */
     public function show(Transfer $transfer)
@@ -46,8 +44,7 @@ class Transfers extends ApiController
     public function store(Request $request)
     {
         $transfer = Transfer::create($request->all());
-
-        return $this->response->created(url('api/transfers/'.$transfer->id));
+        return $this->response->created(url('api/transfers/' . $transfer->id));
     }
 
     /**
@@ -60,25 +57,22 @@ class Transfers extends ApiController
     public function update(Transfer $transfer, Request $request)
     {
         $transfer->update($request->all());
-
         return $this->response->item($transfer->fresh(), new Transformer());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Transfer  $transfer
+     * @param  Transfer $transfer
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Transfer $transfer)
     {
         $payment = Payment::findOrFail($transfer['payment_id']);
         $revenue = Revenue::findOrFail($transfer['revenue_id']);
-
         $transfer->delete();
         $payment->delete();
         $revenue->delete();
-
         return $this->response->noContent();
     }
 }

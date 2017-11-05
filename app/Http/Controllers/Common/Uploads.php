@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Common;
 
 use App\Http\Controllers\Controller;
@@ -20,7 +19,6 @@ class Uploads extends Controller
         if (!$path = $this->getPath($folder, $file)) {
             return false;
         }
-
         return response()->file($path);
     }
 
@@ -37,7 +35,6 @@ class Uploads extends Controller
         if (!$path = $this->getPath($folder, $file)) {
             return false;
         }
-
         return response()->download($path);
     }
 
@@ -54,15 +51,11 @@ class Uploads extends Controller
         if ($folder != 'users') {
             $folder = session('company_id') . '/' . $folder;
         }
-
         $path = $folder . '/' . $file;
-
         if (!Storage::exists($path)) {
             return false;
         }
-
         $full_path = Storage::path($path);
-
         return $full_path;
     }
 }

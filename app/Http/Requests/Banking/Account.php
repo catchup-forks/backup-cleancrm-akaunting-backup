@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests\Banking;
 
 use App\Http\Requests\Request;
@@ -24,10 +23,10 @@ class Account extends Request
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'number' => 'required|string',
-            'currency_code' => 'required|string',
-            'opening_balance' => 'required',
+          'name' => 'required|string',
+          'number' => 'required|string',
+          'currency_code' => 'required|string',
+          'opening_balance' => 'required',
         ];
     }
 }

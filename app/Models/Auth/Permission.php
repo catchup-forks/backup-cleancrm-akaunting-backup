@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Auth;
 
 use EloquentFilter\Filterable;
@@ -14,7 +13,6 @@ class Permission extends LaratrustPermission
     use LaratrustPermissionTrait;
     use Filterable;
     use Sortable;
-
 
     protected $table = 'permissions';
 
@@ -40,13 +38,10 @@ class Permission extends LaratrustPermission
         } else {
             list($folder, $file) = explode('/', Route::current()->uri());
         }
-
         if (empty($folder) || empty($file)) {
             return $this->provideFilter();
         }
-
-        $class = '\App\Filters\\' . ucfirst($folder) .'\\' . ucfirst($file);
-
+        $class = '\App\Filters\\' . ucfirst($folder) . '\\' . ucfirst($file);
         return $this->provideFilter($class);
     }
 
@@ -61,10 +56,8 @@ class Permission extends LaratrustPermission
     public function scopeCollect($query, $sort = 'display_name')
     {
         $request = request();
-
         $input = $request->input();
         $limit = $request->get('limit', setting('general.list_limit', '25'));
-
         return $this->filter($input)->sortable($sort)->paginate($limit);
     }
 }

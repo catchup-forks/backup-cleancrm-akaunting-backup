@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Transformers\Expense;
 
 use App\Transformers\Expense\BillHistories;
@@ -24,26 +23,26 @@ class Bill extends TransformerAbstract
     public function transform(Model $model)
     {
         return [
-            'id' => $model->id,
-            'company_id' => $model->company_id,
-            'bill_number' => $model->bill_number,
-            'order_number' => $model->order_number,
-            'bill_status_code' => $model->invoice_status_code,
-            'billed_at' => $model->billed_at->toIso8601String(),
-            'due_at' => $model->due_at->toIso8601String(),
-            'amount' => $model->amount,
-            'currency_code' => $model->currency_code,
-            'currency_rate' => $model->currency_rate,
-            'vendor_id' => $model->vendor_id,
-            'vendor_name' => $model->vendor_name,
-            'vendor_email' => $model->vendor_email,
-            'vendor_tax_number' => $model->vendor_tax_number,
-            'vendor_phone' => $model->vendor_phone,
-            'vendor_address' => $model->vendor_address,
-            'notes' => $model->notes,
-            'attachment' => $model->attachment,
-            'created_at' => $model->created_at->toIso8601String(),
-            'updated_at' => $model->updated_at->toIso8601String(),
+          'id' => $model->id,
+          'company_id' => $model->company_id,
+          'bill_number' => $model->bill_number,
+          'order_number' => $model->order_number,
+          'bill_status_code' => $model->invoice_status_code,
+          'billed_at' => $model->billed_at->toIso8601String(),
+          'due_at' => $model->due_at->toIso8601String(),
+          'amount' => $model->amount,
+          'currency_code' => $model->currency_code,
+          'currency_rate' => $model->currency_rate,
+          'vendor_id' => $model->vendor_id,
+          'vendor_name' => $model->vendor_name,
+          'vendor_email' => $model->vendor_email,
+          'vendor_tax_number' => $model->vendor_tax_number,
+          'vendor_phone' => $model->vendor_phone,
+          'vendor_address' => $model->vendor_address,
+          'notes' => $model->notes,
+          'attachment' => $model->attachment,
+          'created_at' => $model->created_at->toIso8601String(),
+          'updated_at' => $model->updated_at->toIso8601String(),
         ];
     }
 

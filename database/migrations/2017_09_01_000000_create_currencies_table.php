@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -21,7 +20,6 @@ class CreateCurrenciesTable extends Migration
             $table->tinyInteger('enabled')->default(0);
             $table->timestamps();
             $table->softDeletes();
-
             $table->index('company_id');
             $table->unique(['company_id', 'code', 'deleted_at']);
         });

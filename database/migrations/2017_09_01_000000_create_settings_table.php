@@ -1,8 +1,7 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateSettingsTable extends Migration
 {
@@ -18,7 +17,6 @@ class CreateSettingsTable extends Migration
             $table->integer('company_id');
             $table->string('key');
             $table->text('value')->nullable();
-
             $table->index('company_id');
             $table->unique(['company_id', 'key']);
         });

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -16,13 +15,10 @@ class Request extends FormRequest
     {
         // Get request data
         $data = $this->all();
-
         // Add active company id
         $data['company_id'] = session('company_id');
-
         // Reset the request data
         $this->getInputSource()->replace($data);
-
         return parent::getValidatorInstance();
     }
 }

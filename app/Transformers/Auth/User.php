@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Transformers\Auth;
 
 use App\Transformers\Company\Company;
@@ -20,11 +19,11 @@ class User extends TransformerAbstract
     public function transform(Model $model)
     {
         return [
-            'id' => $model->id,
-            'name' => $model->name,
-            'email' => $model->email,
-            'created_at' => $model->created_at->toIso8601String(),
-            'updated_at' => $model->updated_at->toIso8601String(),
+          'id' => $model->id,
+          'name' => $model->name,
+          'email' => $model->email,
+          'created_at' => $model->created_at->toIso8601String(),
+          'updated_at' => $model->updated_at->toIso8601String(),
         ];
     }
 

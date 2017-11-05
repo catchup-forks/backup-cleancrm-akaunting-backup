@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests\Expense;
 
 use App\Http\Requests\Request;
@@ -29,14 +28,12 @@ class Vendor extends Request
         } else {
             $id = null;
         }
-
         // Get company id
         $company_id = $this->request->get('company_id');
-
         return [
-            'name' => 'required|string',
-            'email' => 'required|email|unique:vendors,NULL,' . $id . ',id,company_id,' . $company_id . ',deleted_at,NULL',
-            'currency_code' => 'required|string',
+          'name' => 'required|string',
+          'email' => 'required|email|unique:vendors,NULL,' . $id . ',id,company_id,' . $company_id . ',deleted_at,NULL',
+          'currency_code' => 'required|string',
         ];
     }
 }

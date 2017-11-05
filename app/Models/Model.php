@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use App\Scopes\Company;
@@ -24,7 +23,6 @@ class Model extends Eloquent
     protected static function boot()
     {
         parent::boot();
-
         static::addGlobalScope(new Company);
     }
 
@@ -53,13 +51,10 @@ class Model extends Eloquent
         } else {
             list($folder, $file) = explode('/', Route::current()->uri());
         }
-
         if (empty($folder) || empty($file)) {
             return $this->provideFilter();
         }
-
         $class = '\App\Filters\\' . ucfirst($folder) . '\\' . ucfirst($file);
-
         return $this->provideFilter($class);
     }
 
@@ -87,10 +82,8 @@ class Model extends Eloquent
     public function scopeCollect($query, $sort = 'name')
     {
         $request = request();
-
         $input = $request->input();
         $limit = $request->get('limit', setting('general.list_limit', '25'));
-
         return $this->filter($input)->sortable($sort)->paginate($limit);
     }
 

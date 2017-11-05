@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -10,8 +9,8 @@ class RedirectIfNotInstalled
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -20,12 +19,10 @@ class RedirectIfNotInstalled
         if (File::exists(base_path('.env'))) {
             return $next($request);
         }
-
         // Already in the wizard
         if (starts_with($request->getPathInfo(), '/install')) {
             return $next($request);
         }
-
         // Not installed, redirect to installation wizard
         redirect('install/requirements')->send();
     }

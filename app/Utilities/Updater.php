@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Utilities;
 
 use App\Models\Module\Module as Model;
@@ -20,7 +19,6 @@ class Updater
         Cache::forget('modules');
         Cache::forget('updates');
         Cache::forget('versions');
-
         return true;
     }
 
@@ -31,33 +29,24 @@ class Updater
         if (!$data = static::download($alias, $version)) {
             return false;
         }
-
         // Create temp directory
         $path = 'temp-' . md5(mt_rand());
         $temp_path = storage_path('app/temp') . '/' . $path;
-
         if (!File::isDirectory($temp_path)) {
             File::makeDirectory($temp_path);
         }
-
         $file = $temp_path . '/upload.zip';
-
         // Add content to the Zip file
         $uploaded = is_int(file_put_contents($file, $data)) ? true : false;
-
         if (!$uploaded) {
             return false;
         }
-
         // Unzip the file
         $zip = new ZipArchive();
-
         if (!$zip->open($file) || !$zip->extractTo($temp_path)) {
             return false;
         }
-
         $zip->close();
-
         if ($alias == 'core') {
             // Move all files/folders from temp path
             if (!File::copyDirectory($temp_path, base_path())) {
@@ -67,47 +56,38 @@ class Updater
             // Get module instance
             $module = Module::get($alias);
             $model = Model::where('alias', $alias)->first();
-
             // Move all files/folders from temp path
             if (!File::copyDirectory($temp_path, module_path($module->get('name')))) {
                 return false;
             }
-
             // Add history
             ModelHistory::create([
-                'company_id' => session('company_id'),
-                'module_id' => $model->id,
-                'category' => $module->get('category'),
-                'version' => $version,
-                'description' => trans('modules.history.updated', ['module' => $module->get('name')]),
+              'company_id' => session('company_id'),
+              'module_id' => $model->id,
+              'category' => $module->get('category'),
+              'version' => $version,
+              'description' => trans('modules.history.updated', ['module' => $module->get('name')]),
             ]);
         }
-
         // Delete temp directory
         File::deleteDirectory($temp_path);
-
         return true;
     }
 
     public static function download($alias, $version)
     {
         $file = null;
-
         // Check core first
         $info = Info::all();
-
         if ($alias == 'core') {
             $url = 'core/download/' . $version . '/' . $info['php'] . '/' . $info['mysql'];
         } else {
             $url = 'apps/' . $alias . '/download/' . $version . '/' . $info['akaunting'] . '/' . $info['token'];
         }
-
         $response = static::getRemote($url, ['timeout' => 30, 'track_redirects' => true]);
-
         if ($response->getStatusCode() == 200) {
             $file = $response->getBody()->getContents();
         }
-
         return $file;
     }
 
@@ -115,18 +95,13 @@ class Updater
     {
         // Get data from cache
         $data = Cache::get('updates');
-
         if (!empty($data)) {
             return $data;
         }
-
         // No data in cache, grab them from remote
         $data = array();
-
         $modules = Module::all();
-
         $versions = Versions::latest($modules);
-
         foreach ($versions as $alias => $version) {
             // Modules come as array
             if ($alias == 'core') {
@@ -135,18 +110,14 @@ class Updater
                 }
             } else {
                 $module = Module::get($alias);
-
                 // Up-to-date
                 if (version_compare($module->get('version'), $version) == 0) {
                     continue;
                 }
-
                 $data[$alias] = $version;
             }
         }
-
         Cache::put('updates', $data, Date::now()->addHour(6));
-
         return $data;
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api\Banking;
 
 use App\Http\Controllers\ApiController;
@@ -20,14 +19,13 @@ class Accounts extends ApiController
     public function index()
     {
         $accounts = Account::collect();
-
         return $this->response->paginator($accounts, new Transformer());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  Account  $account
+     * @param  Account $account
      * @return \Dingo\Api\Http\Response
      */
     public function show(Account $account)
@@ -44,8 +42,7 @@ class Accounts extends ApiController
     public function store(Request $request)
     {
         $account = Account::create($request->all());
-
-        return $this->response->created(url('api/accounts/'.$account->id));
+        return $this->response->created(url('api/accounts/' . $account->id));
     }
 
     /**
@@ -58,20 +55,18 @@ class Accounts extends ApiController
     public function update(Account $account, Request $request)
     {
         $account->update($request->all());
-
         return $this->response->item($account->fresh(), new Transformer());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Account  $account
+     * @param  Account $account
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Account $account)
     {
         $account->delete();
-
         return $this->response->noContent();
     }
 }

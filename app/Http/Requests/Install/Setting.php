@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests\Install;
 
 use App\Http\Requests\Request;
@@ -24,10 +23,10 @@ class Setting extends Request
     public function rules()
     {
         return [
-            'company_name' => 'required',
-            'company_email' => 'required',
-            'user_email' => 'required',
-            'user_password' => 'required'
+          'company_name' => 'required',
+          'company_email' => 'required',
+          'user_email' => 'required',
+          'user_password' => 'required'
         ];
     }
 }

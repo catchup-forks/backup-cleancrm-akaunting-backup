@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api\Settings;
 
 use App\Http\Controllers\ApiController;
@@ -20,14 +19,13 @@ class Categories extends ApiController
     public function index()
     {
         $categories = Category::collect();
-
         return $this->response->paginator($categories, new Transformer());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  Category  $category
+     * @param  Category $category
      * @return \Dingo\Api\Http\Response
      */
     public function show(Category $category)
@@ -44,8 +42,7 @@ class Categories extends ApiController
     public function store(Request $request)
     {
         $category = Category::create($request->all());
-
-        return $this->response->created(url('api/categories/'.$category->id));
+        return $this->response->created(url('api/categories/' . $category->id));
     }
 
     /**
@@ -58,20 +55,18 @@ class Categories extends ApiController
     public function update(Category $category, Request $request)
     {
         $category->update($request->all());
-
         return $this->response->item($category->fresh(), new Transformer());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Category  $category
+     * @param  Category $category
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Category $category)
     {
         $category->delete();
-
         return $this->response->noContent();
     }
 }

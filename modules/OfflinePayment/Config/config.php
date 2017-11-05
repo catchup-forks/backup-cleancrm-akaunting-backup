@@ -1,7 +1,4 @@
 <?php
-
 return [
-
-    'name' => 'OfflinePayment',
-
+  'name' => 'OfflinePayment',
 ];

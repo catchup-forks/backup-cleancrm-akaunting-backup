@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api\Settings;
 
 use App\Http\Controllers\ApiController;
@@ -20,14 +19,13 @@ class Taxes extends ApiController
     public function index()
     {
         $taxes = Tax::collect();
-
         return $this->response->paginator($taxes, new Transformer());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  Tax  $tax
+     * @param  Tax $tax
      * @return \Dingo\Api\Http\Response
      */
     public function show(Tax $tax)
@@ -44,8 +42,7 @@ class Taxes extends ApiController
     public function store(Request $request)
     {
         $tax = Tax::create($request->all());
-
-        return $this->response->created(url('api/taxes/'.$tax->id));
+        return $this->response->created(url('api/taxes/' . $tax->id));
     }
 
     /**
@@ -58,20 +55,18 @@ class Taxes extends ApiController
     public function update(Tax $tax, Request $request)
     {
         $tax->update($request->all());
-
         return $this->response->item($tax->fresh(), new Transformer());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Tax  $tax
+     * @param  Tax $tax
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Tax $tax)
     {
         $tax->delete();
-
         return $this->response->noContent();
     }
 }

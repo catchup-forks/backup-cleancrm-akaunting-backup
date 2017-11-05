@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api\Incomes;
 
 use App\Http\Requests\Income\InvoicePayment as Request;
@@ -29,7 +28,6 @@ class InvoicePayments extends BaseController
     public function index($invoice_id)
     {
         $invoice_payments = InvoicePayment::where('invoice_id', $invoice_id)->get();
-
         return $this->response->collection($invoice_payments, new Transformer());
     }
 
@@ -43,7 +41,6 @@ class InvoicePayments extends BaseController
     public function show($invoice_id, $id)
     {
         $invoice_payment = InvoicePayment::find($id);
-
         return $this->response->item($invoice_payment, new Transformer());
     }
 
@@ -58,14 +55,10 @@ class InvoicePayments extends BaseController
     {
         // Get currency object
         $currency = Currency::where('code', $request['currency_code'])->first();
-
         $request['currency_code'] = $currency->code;
         $request['currency_rate'] = $currency->rate;
-
         $request['invoice_id'] = $invoice_id;
-
         $invoice = Invoice::find($invoice_id);
-
         if ($request['currency_code'] == $invoice->currency_code) {
             if ($request['amount'] > $invoice->amount) {
                 return $this->response->noContent();
@@ -76,13 +69,10 @@ class InvoicePayments extends BaseController
             }
         } else {
             $request_invoice = new Invoice();
-
-            $request_invoice->amount = (float) $request['amount'];
+            $request_invoice->amount = (float)$request['amount'];
             $request_invoice->currency_code = $currency->code;
             $request_invoice->currency_rate = $currency->rate;
-
             $amount = $request_invoice->getConvertedAmount();
-
             if ($amount > $invoice->amount) {
                 return $this->response->noContent();
             } elseif ($amount == $invoice->amount) {
@@ -91,20 +81,14 @@ class InvoicePayments extends BaseController
                 $invoice->invoice_status_code = 'partial';
             }
         }
-
         $invoice->save();
-
         $invoice_payment = InvoicePayment::create($request->input());
-
         $request['status_code'] = $invoice->invoice_status_code;
         $request['notify'] = 0;
-
         $desc_date = Date::parse($request['paid_at'])->format($this->getCompanyDateFormat());
-        $desc_amount = money((float) $request['amount'], $request['currency_code'], true)->format();
+        $desc_amount = money((float)$request['amount'], $request['currency_code'], true)->format();
         $request['description'] = $desc_date . ' ' . $desc_amount;
-
         InvoiceHistory::create($request->input());
-
         return $this->response->created(url('api/invoices/' . $invoice_id . '/payments' . $invoice_payment->id));
     }
 
@@ -118,9 +102,7 @@ class InvoicePayments extends BaseController
     public function destroy($invoice_id, $id)
     {
         $invoice_payment = InvoicePayment::find($id);
-
         $invoice_payment->delete();
-
         return $this->response->noContent();
     }
 }

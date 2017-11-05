@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -33,11 +32,9 @@ class CreateInvoicesTable extends Migration
             $table->string('attachment')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
             $table->index('company_id');
             $table->unique(['company_id', 'invoice_number', 'deleted_at']);
         });
-
         Schema::create('invoice_items', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id');
@@ -52,10 +49,8 @@ class CreateInvoicesTable extends Migration
             $table->integer('tax_id');
             $table->timestamps();
             $table->softDeletes();
-
             $table->index('company_id');
         });
-
         Schema::create('invoice_statuses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id');
@@ -63,10 +58,8 @@ class CreateInvoicesTable extends Migration
             $table->string('code');
             $table->timestamps();
             $table->softDeletes();
-
             $table->index('company_id');
         });
-
         Schema::create('invoice_payments', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id');
@@ -82,10 +75,8 @@ class CreateInvoicesTable extends Migration
             $table->string('attachment')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
             $table->index('company_id');
         });
-
         Schema::create('invoice_histories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id');
@@ -95,7 +86,6 @@ class CreateInvoicesTable extends Migration
             $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
             $table->index('company_id');
         });
     }

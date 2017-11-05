@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Transformers\Item;
 
 use App\Transformers\Setting\Category;
@@ -21,20 +20,20 @@ class Item extends TransformerAbstract
     public function transform(Model $model)
     {
         return [
-            'id' => $model->id,
-            'company_id' => $model->company_id,
-            'name' => $model->name,
-            'sku' => $model->sku,
-            'description' => $model->description,
-            'sale_price' => $model->sale_price,
-            'purchase_price' => $model->purchase_price,
-            'quantity' => $model->quantity,
-            'category_id' => $model->category_id,
-            'tax_id' => $model->tax_id,
-            'picture' => $model->picture,
-            'enabled' => $model->enabled,
-            'created_at' => $model->created_at->toIso8601String(),
-            'updated_at' => $model->updated_at->toIso8601String(),
+          'id' => $model->id,
+          'company_id' => $model->company_id,
+          'name' => $model->name,
+          'sku' => $model->sku,
+          'description' => $model->description,
+          'sale_price' => $model->sale_price,
+          'purchase_price' => $model->purchase_price,
+          'quantity' => $model->quantity,
+          'category_id' => $model->category_id,
+          'tax_id' => $model->tax_id,
+          'picture' => $model->picture,
+          'enabled' => $model->enabled,
+          'created_at' => $model->created_at->toIso8601String(),
+          'updated_at' => $model->updated_at->toIso8601String(),
         ];
     }
 
@@ -47,7 +46,6 @@ class Item extends TransformerAbstract
         if (!$model->tax) {
             return $this->null();
         }
-
         return $this->item($model->tax, new Tax());
     }
 
@@ -60,7 +58,6 @@ class Item extends TransformerAbstract
         if (!$model->category) {
             return $this->null();
         }
-
         return $this->item($model->category, new Category());
     }
 }

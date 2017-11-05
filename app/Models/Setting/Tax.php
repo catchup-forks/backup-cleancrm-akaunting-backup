@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Setting;
 
 use App\Models\Model;
@@ -41,11 +40,11 @@ class Tax extends Model
     /**
      * Convert rate to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setRateAttribute($value)
     {
-        $this->attributes['rate'] = (double) $value;
+        $this->attributes['rate'] = (double)$value;
     }
 }

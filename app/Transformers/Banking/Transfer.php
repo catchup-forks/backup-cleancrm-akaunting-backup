@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Transformers\Banking;
 
 use App\Transformers\Expense\Payment;
@@ -21,12 +20,12 @@ class Transfer extends TransformerAbstract
     public function transform(Model $model)
     {
         return [
-            'id' => $model->id,
-            'company_id' => $model->company_id,
-            'payment_id' => $model->payment_id,
-            'revenue_id' => $model->revenue_id,
-            'created_at' => $model->created_at->toIso8601String(),
-            'updated_at' => $model->updated_at->toIso8601String(),
+          'id' => $model->id,
+          'company_id' => $model->company_id,
+          'payment_id' => $model->payment_id,
+          'revenue_id' => $model->revenue_id,
+          'created_at' => $model->created_at->toIso8601String(),
+          'updated_at' => $model->updated_at->toIso8601String(),
         ];
     }
 

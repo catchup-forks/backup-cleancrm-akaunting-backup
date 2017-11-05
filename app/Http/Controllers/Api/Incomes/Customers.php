@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api\Incomes;
 
 use App\Http\Controllers\ApiController;
@@ -20,14 +19,13 @@ class Customers extends ApiController
     public function index()
     {
         $customers = Customer::collect();
-
         return $this->response->paginator($customers, new Transformer());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int|string  $id
+     * @param  int|string $id
      * @return \Dingo\Api\Http\Response
      */
     public function show($id)
@@ -38,7 +36,6 @@ class Customers extends ApiController
         } else {
             $customer = Customer::where('email', $id)->first();
         }
-
         return $this->response->item($customer, new Transformer());
     }
 
@@ -51,8 +48,7 @@ class Customers extends ApiController
     public function store(Request $request)
     {
         $customer = Customer::create($request->all());
-
-        return $this->response->created(url('api/customers/'.$customer->id));
+        return $this->response->created(url('api/customers/' . $customer->id));
     }
 
     /**
@@ -65,20 +61,18 @@ class Customers extends ApiController
     public function update(Customer $customer, Request $request)
     {
         $customer->update($request->all());
-
         return $this->response->item($customer->fresh(), new Transformer());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Customer  $customer
+     * @param  Customer $customer
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Customer $customer)
     {
         $customer->delete();
-
         return $this->response->noContent();
     }
 }

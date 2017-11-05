@@ -1,8 +1,5 @@
 <?php
-
 return [
-
-    'rate'                  => 'Taux',
-    'rate_percent'          => 'Taux (%)',
-
+  'rate' => 'Taux',
+  'rate_percent' => 'Taux (%)',
 ];

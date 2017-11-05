@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\ApiController;
@@ -20,14 +19,13 @@ class Permissions extends ApiController
     public function index()
     {
         $permissions = Permission::collect();
-
         return $this->response->paginator($permissions, new Transformer());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  Permission  $permission
+     * @param  Permission $permission
      * @return \Dingo\Api\Http\Response
      */
     public function show(Permission $permission)
@@ -44,8 +42,7 @@ class Permissions extends ApiController
     public function store(Request $request)
     {
         $permission = Permission::create($request->all());
-
-        return $this->response->created(url('api/permissions/'.$permission->id));
+        return $this->response->created(url('api/permissions/' . $permission->id));
     }
 
     /**
@@ -58,20 +55,18 @@ class Permissions extends ApiController
     public function update(Permission $permission, Request $request)
     {
         $permission->update($request->all());
-
         return $this->response->item($permission->fresh(), new Transformer());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Permission  $permission
+     * @param  Permission $permission
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Permission $permission)
     {
         $permission->delete();
-
         return $this->response->noContent();
     }
 }

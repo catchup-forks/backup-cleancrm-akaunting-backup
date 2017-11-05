@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -19,7 +18,7 @@ class CompanySeed extends Command
      * @var string
      */
     protected $description = 'Seed for specific company';
-    
+
     /**
      * Create a new command instance.
      *
@@ -38,9 +37,7 @@ class CompanySeed extends Command
     public function handle()
     {
         $class = $this->laravel->make('CompanySeeder');
-        
         $seeder = $class->setContainer($this->laravel)->setCommand($this);
-        
         $seeder->__invoke();
     }
 

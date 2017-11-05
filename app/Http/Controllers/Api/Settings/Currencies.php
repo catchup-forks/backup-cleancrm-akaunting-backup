@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api\Settings;
 
 use App\Http\Controllers\ApiController;
@@ -20,14 +19,13 @@ class Currencies extends ApiController
     public function index()
     {
         $currencies = Currency::collect();
-
         return $this->response->paginator($currencies, new Transformer());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  Currency  $currency
+     * @param  Currency $currency
      * @return \Dingo\Api\Http\Response
      */
     public function show(Currency $currency)
@@ -44,8 +42,7 @@ class Currencies extends ApiController
     public function store(Request $request)
     {
         $currency = Currency::create($request->all());
-
-        return $this->response->created(url('api/currencies/'.$currency->id));
+        return $this->response->created(url('api/currencies/' . $currency->id));
     }
 
     /**
@@ -58,20 +55,18 @@ class Currencies extends ApiController
     public function update(Currency $currency, Request $request)
     {
         $currency->update($request->all());
-
         return $this->response->item($currency->fresh(), new Transformer());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Currency  $currency
+     * @param  Currency $currency
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Currency $currency)
     {
         $currency->delete();
-
         return $this->response->noContent();
     }
 }

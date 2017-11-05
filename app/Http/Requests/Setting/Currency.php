@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests\Setting;
 
 use App\Http\Requests\Request;
@@ -29,16 +28,14 @@ class Currency extends Request
         } else {
             $id = null;
         }
-
         // Get company id
         $company_id = $this->request->get('company_id');
-
         return [
-            'name' => 'required|string',
-            'code' => 'required|string|unique:currencies,NULL,' . $id . ',id,company_id,' . $company_id . ',deleted_at,NULL',
-            'rate' => 'required',
-            'enabled' => 'boolean',
-            'default_currency' => 'boolean',
+          'name' => 'required|string',
+          'code' => 'required|string|unique:currencies,NULL,' . $id . ',id,company_id,' . $company_id . ',deleted_at,NULL',
+          'rate' => 'required',
+          'enabled' => 'boolean',
+          'default_currency' => 'boolean',
         ];
     }
 }

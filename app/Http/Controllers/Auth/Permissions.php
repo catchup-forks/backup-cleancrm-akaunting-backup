@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -17,7 +16,6 @@ class Permissions extends Controller
     public function index()
     {
         $permissions = Permission::collect();
-
         return view('auth.permissions.index', compact('permissions'));
     }
 
@@ -34,7 +32,7 @@ class Permissions extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  Request $request
      *
      * @return Response
      */
@@ -42,18 +40,15 @@ class Permissions extends Controller
     {
         // Create permission
         $permission = Permission::create($request->all());
-
         $message = trans('messages.success.added', ['type' => trans_choice('general.permissions', 1)]);
-
         flash($message)->success();
-
         return redirect('auth/permissions');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Permission  $permission
+     * @param  Permission $permission
      *
      * @return Response
      */
@@ -65,8 +60,8 @@ class Permissions extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Permission  $permission
-     * @param  Request  $request
+     * @param  Permission $permission
+     * @param  Request $request
      *
      * @return Response
      */
@@ -74,29 +69,23 @@ class Permissions extends Controller
     {
         // Update permission
         $permission->update($request->all());
-
         $message = trans('messages.success.updated', ['type' => trans_choice('general.permissions', 1)]);
-
         flash($message)->success();
-
         return redirect('auth/permissions');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Permission  $permission
+     * @param  Permission $permission
      *
      * @return Response
      */
     public function destroy(Permission $permission)
     {
         $permission->delete();
-
         $message = trans('messages.success.deleted', ['type' => trans_choice('general.permissions', 1)]);
-
         flash($message)->success();
-
         return redirect('auth/permissions');
     }
 }

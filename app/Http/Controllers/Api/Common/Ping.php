@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api\Common;
 
 use App\Http\Controllers\ApiController;
@@ -18,8 +17,8 @@ class Ping extends ApiController
     public function index()
     {
         return $this->response->array([
-            'status' => 'ok',
-            'timestamp' => Date::now(),
+          'status' => 'ok',
+          'timestamp' => Date::now(),
         ]);
     }
 }

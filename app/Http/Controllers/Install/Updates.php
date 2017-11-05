@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Install;
 
 use App\Http\Controllers\Controller;
@@ -20,36 +19,27 @@ class Updates extends Controller
     public function index()
     {
         $updates = Updater::all();
-
         $core = null;
-
         $modules = array();
-
         if (isset($updates['core'])) {
             $core = $updates['core'];
         }
-
         $rows = Module::all();
-
         if ($rows) {
             foreach ($rows as $row) {
                 $alias = $row->get('alias');
-
                 if (!isset($updates[$alias])) {
                     continue;
                 }
-
                 $m = new \stdClass();
                 $m->name = $row->get('name');
                 $m->alias = $row->get('alias');
                 $m->category = $row->get('category');
                 $m->installed = $row->get('version');
                 $m->latest = $updates[$alias];
-
                 $modules[] = $m;
             }
         }
-
         return view('install.updates.index', compact('core', 'modules'));
     }
 
@@ -67,7 +57,6 @@ class Updates extends Controller
     {
         // Clear cache in order to check for updates
         Updater::clear();
-
         return redirect()->back();
     }
 
@@ -81,13 +70,10 @@ class Updates extends Controller
     public function update($alias, $version)
     {
         set_time_limit(600); // 10 minutes
-
         if (Updater::update($alias, $version)) {
             return redirect('install/updates/post/' . $alias . '/' . version('short') . '/' . $version);
         }
-
         flash(trans('updates.error'))->error();
-
         return redirect()->back();
     }
 
@@ -104,20 +90,14 @@ class Updates extends Controller
         // Check if the file mirror was successful
         if (($alias == 'core') && (version('short') != $new)) {
             flash(trans('updates.error'))->error();
-
             return redirect('install/updates');
         }
-
         // Clear cache after update
         Artisan::call('cache:clear');
-
         // Update database
         Artisan::call('migrate', ['--force' => true]);
-
         event(new UpdateFinished($alias, $old, $new));
-
         flash(trans('updates.success'))->success();
-
         return redirect('install/updates');
     }
 }

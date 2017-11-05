@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -19,7 +18,6 @@ class CreateTransfersTable extends Migration
             $table->integer('revenue_id');
             $table->timestamps();
             $table->softDeletes();
-
             $table->index('company_id');
         });
     }

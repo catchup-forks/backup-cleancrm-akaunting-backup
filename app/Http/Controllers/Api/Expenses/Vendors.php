@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api\Expenses;
 
 use App\Http\Controllers\ApiController;
@@ -20,14 +19,13 @@ class Vendors extends ApiController
     public function index()
     {
         $vendors = Vendor::collect();
-
         return $this->response->paginator($vendors, new Transformer());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int|string  $id
+     * @param  int|string $id
      * @return \Dingo\Api\Http\Response
      */
     public function show($id)
@@ -38,7 +36,6 @@ class Vendors extends ApiController
         } else {
             $vendor = Vendor::where('email', $id)->first();
         }
-
         return $this->response->item($vendor, new Transformer());
     }
 
@@ -51,8 +48,7 @@ class Vendors extends ApiController
     public function store(Request $request)
     {
         $vendor = Vendor::create($request->all());
-
-        return $this->response->created(url('api/vendors/'.$vendor->id));
+        return $this->response->created(url('api/vendors/' . $vendor->id));
     }
 
     /**
@@ -65,20 +61,18 @@ class Vendors extends ApiController
     public function update(Vendor $vendor, Request $request)
     {
         $vendor->update($request->all());
-
         return $this->response->item($vendor->fresh(), new Transformer());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Vendor  $vendor
+     * @param  Vendor $vendor
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Vendor $vendor)
     {
         $vendor->delete();
-
         return $this->response->noContent();
     }
 }

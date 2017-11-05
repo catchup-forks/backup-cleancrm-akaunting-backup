@@ -1,8 +1,7 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
@@ -24,16 +23,13 @@ class CreateUsersTable extends Migration
             $table->boolean('enabled')->default(1);
             $table->timestamps();
             $table->softDeletes();
-
             $table->unique(['email', 'deleted_at']);
         });
-
         // Create table for associating companies to users (Many To Many Polymorphic)
         Schema::create('user_companies', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('company_id')->unsigned();
             $table->string('user_type');
-
             $table->primary(['user_id', 'company_id', 'user_type']);
         });
     }

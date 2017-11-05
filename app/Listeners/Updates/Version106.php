@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Listeners\Updates;
 
 use App\Events\UpdateFinished;
@@ -23,8 +22,7 @@ class Version106 extends Listener
         if (!$this->check($event)) {
             return;
         }
-
         // Moved to app directory
-        File::deleteDirectory(app_path('Http' . DIRECTORY_SEPARATOR .'Transformers'));
+        File::deleteDirectory(app_path('Http' . DIRECTORY_SEPARATOR . 'Transformers'));
     }
 }

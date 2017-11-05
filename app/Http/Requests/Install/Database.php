@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests\Install;
 
 use App\Http\Requests\Request;
@@ -24,9 +23,9 @@ class Database extends Request
     public function rules()
     {
         return [
-            'hostname' => 'required',
-            'username' => 'required',
-            'database' => 'required'
+          'hostname' => 'required',
+          'username' => 'required',
+          'database' => 'required'
         ];
     }
 }

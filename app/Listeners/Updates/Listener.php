@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Listeners\Updates;
 
 class Listener
@@ -20,12 +19,10 @@ class Listener
         if ($event->alias != static::ALIAS) {
             return false;
         }
-
         // Do not apply to the same or newer versions
         if ($event->old >= static::VERSION) {
             return false;
         }
-
         return true;
     }
 }

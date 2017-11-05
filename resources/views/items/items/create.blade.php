@@ -3,73 +3,73 @@
 @section('title', trans('general.title.new', ['type' => trans_choice('general.items', 1)]))
 
 @section('content')
-    <!-- Default box -->
-    <div class="box box-success">
-        {!! Form::open(['url' => 'items/items', 'files' => true, 'role' => 'form']) !!}
+  <!-- Default box -->
+<div class="box box-success">
+  {!! Form::open(['url' => 'items/items', 'files' => true, 'role' => 'form']) !!}
 
-        <div class="box-body">
-            {{ Form::textGroup('name', trans('general.name'), 'id-card-o') }}
+  <div class="box-body">
+    {{ Form::textGroup('name', trans('general.name'), 'id-card-o') }}
 
-            {{ Form::textGroup('sku', trans('items.sku'), 'key') }}
+    {{ Form::textGroup('sku', trans('items.sku'), 'key') }}
 
-            {{ Form::textareaGroup('description', trans('general.description')) }}
+    {{ Form::textareaGroup('description', trans('general.description')) }}
 
-            {{ Form::textGroup('sale_price', trans('items.sales_price'), 'money') }}
+    {{ Form::textGroup('sale_price', trans('items.sales_price'), 'money') }}
 
-            {{ Form::textGroup('purchase_price', trans('items.purchase_price'), 'money') }}
+    {{ Form::textGroup('purchase_price', trans('items.purchase_price'), 'money') }}
 
-            {{ Form::textGroup('quantity', trans_choice('items.quantities', 1), 'cubes', ['required' => 'required'], '1') }}
+    {{ Form::textGroup('quantity', trans_choice('items.quantities', 1), 'cubes', ['required' => 'required'], '1') }}
 
-            {{ Form::selectGroup('tax_id', trans_choice('general.taxes', 1), 'percent', $taxes, setting('general.default_tax'), []) }}
+    {{ Form::selectGroup('tax_id', trans_choice('general.taxes', 1), 'percent', $taxes, setting('general.default_tax'), []) }}
 
-            {{ Form::selectGroup('category_id', trans_choice('general.categories', 1), 'folder-open-o', $categories, null, []) }}
+    {{ Form::selectGroup('category_id', trans_choice('general.categories', 1), 'folder-open-o', $categories, null, []) }}
 
-            {{ Form::fileGroup('picture', trans_choice('general.pictures', 1)) }}
+    {{ Form::fileGroup('picture', trans_choice('general.pictures', 1)) }}
 
-            {{ Form::radioGroup('enabled', trans('general.enabled')) }}
-        </div>
-        <!-- /.box-body -->
+    {{ Form::radioGroup('enabled', trans('general.enabled')) }}
+  </div>
+  <!-- /.box-body -->
 
-        <div class="box-footer">
-            {{ Form::saveButtons('items/items') }}
-        </div>
-        <!-- /.box-footer -->
+  <div class="box-footer">
+    {{ Form::saveButtons('items/items') }}
+  </div>
+  <!-- /.box-footer -->
 
-        {!! Form::close() !!}
-    </div>
+  {!! Form::close() !!}
+</div>
 @endsection
 
 @section('js')
-    <script src="{{ asset('public/js/bootstrap-fancyfile.js') }}"></script>
+  <script src="{{ asset('public/js/bootstrap-fancyfile.js') }}"></script>
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('public/css/bootstrap-fancyfile.css') }}">
+  <link rel="stylesheet" href="{{ asset('public/css/bootstrap-fancyfile.css') }}">
 @endsection
 
 @section('scripts')
-    <script type="text/javascript">
-        var text_yes = '{{ trans('general.yes') }}';
-        var text_no = '{{ trans('general.no') }}';
+  <script type="text/javascript">
+    var text_yes = '{{ trans('general.yes') }}';
+    var text_no = '{{ trans('general.no') }}';
 
-        $(document).ready(function(){
-            $('#enabled_1').trigger('click');
+    $(document).ready(function () {
+      $('#enabled_1').trigger('click');
 
-            $('#name').focus();
+      $('#name').focus();
 
-            $("#tax_id").select2({
-                placeholder: "{{ trans('general.form.select.field', ['field' => trans_choice('general.taxes', 1)]) }}"
-            });
+      $("#tax_id").select2({
+        placeholder: "{{ trans('general.form.select.field', ['field' => trans_choice('general.taxes', 1)]) }}"
+      });
 
-            $("#category_id").select2({
-                placeholder: "{{ trans('general.form.select.field', ['field' => trans_choice('general.categories', 1)]) }}"
-            });
+      $("#category_id").select2({
+        placeholder: "{{ trans('general.form.select.field', ['field' => trans_choice('general.categories', 1)]) }}"
+      });
 
-            $('#picture').fancyfile({
-                text  : '{{ trans('general.form.select.file') }}',
-                style : 'btn-default',
-                placeholder : '{{ trans('general.form.no_file_selected') }}'
-            });
-        });
-    </script>
+      $('#picture').fancyfile({
+        text: '{{ trans('general.form.select.file') }}',
+        style: 'btn-default',
+        placeholder: '{{ trans('general.form.no_file_selected') }}'
+      });
+    });
+  </script>
 @endsection

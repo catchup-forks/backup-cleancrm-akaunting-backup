@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Modules;
 
 use App\Http\Controllers\Controller;
@@ -20,12 +19,9 @@ class Tiles extends Controller
     public function category($alias)
     {
         $this->checkApiToken();
-
         $data = $this->getModulesByCategory($alias);
-
         $title = $data->category->name;
         $modules = $data->modules;
-
         return view('modules.tiles.index', compact('title', 'modules'));
     }
 
@@ -37,10 +33,8 @@ class Tiles extends Controller
     public function paid()
     {
         $this->checkApiToken();
-
         $title = trans('modules.top_paid');
         $modules = $this->getPaidModules();
-
         return view('modules.tiles.index', compact('title', 'modules'));
     }
 
@@ -52,10 +46,8 @@ class Tiles extends Controller
     public function new()
     {
         $this->checkApiToken();
-
         $title = trans('modules.new');
         $modules = $this->getNewModules();
-
         return view('modules.tiles.index', compact('title', 'modules'));
     }
 
@@ -67,10 +59,8 @@ class Tiles extends Controller
     public function free()
     {
         $this->checkApiToken();
-
         $title = trans('modules.top_free');
         $modules = $this->getFreeModules();
-
         return view('modules.tiles.index', compact('title', 'modules'));
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Expense;
 
 use App\Models\Model;
@@ -18,7 +17,20 @@ class Payment extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_id', 'account_id', 'paid_at', 'amount', 'currency_code', 'currency_rate', 'vendor_id', 'description', 'category_id', 'payment_method', 'reference', 'attachment'];
+    protected $fillable = [
+      'company_id',
+      'account_id',
+      'paid_at',
+      'amount',
+      'currency_code',
+      'currency_rate',
+      'vendor_id',
+      'description',
+      'category_id',
+      'payment_method',
+      'reference',
+      'attachment'
+    ];
 
     /**
      * Sortable columns.
@@ -33,10 +45,10 @@ class Payment extends Model
      * @var array
      */
     protected $searchableColumns = [
-        'accounts.name',
-        'categories.name',
-        'vendors.name' ,
-        'description'  ,
+      'accounts.name',
+      'categories.name',
+      'vendors.name',
+      'description',
     ];
 
     public function account()
@@ -67,23 +79,23 @@ class Payment extends Model
     /**
      * Convert amount to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setAmountAttribute($value)
     {
-        $this->attributes['amount'] = (double) $value;
+        $this->attributes['amount'] = (double)$value;
     }
 
     /**
      * Convert currency rate to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setCurrencyRateAttribute($value)
     {
-        $this->attributes['currency_rate'] = (double) $value;
+        $this->attributes['currency_rate'] = (double)$value;
     }
 
     public static function scopeLatest($query)

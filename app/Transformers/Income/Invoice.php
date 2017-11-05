@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Transformers\Income;
 
 use App\Transformers\Income\Customer;
@@ -24,26 +23,26 @@ class Invoice extends TransformerAbstract
     public function transform(Model $model)
     {
         return [
-            'id' => $model->id,
-            'company_id' => $model->company_id,
-            'invoice_number' => $model->invoice_number,
-            'order_number' => $model->order_number,
-            'invoice_status_code' => $model->invoice_status_code,
-            'invoiced_at' => $model->invoiced_at->toIso8601String(),
-            'due_at' => $model->due_at->toIso8601String(),
-            'amount' => $model->amount,
-            'currency_code' => $model->currency_code,
-            'currency_rate' => $model->currency_rate,
-            'customer_id' => $model->customer_id,
-            'customer_name' => $model->customer_name,
-            'customer_email' => $model->customer_email,
-            'customer_tax_number' => $model->customer_tax_number,
-            'customer_phone' => $model->customer_phone,
-            'customer_address' => $model->customer_address,
-            'notes' => $model->notes,
-            'attachment' => $model->attachment,
-            'created_at' => $model->created_at->toIso8601String(),
-            'updated_at' => $model->updated_at->toIso8601String(),
+          'id' => $model->id,
+          'company_id' => $model->company_id,
+          'invoice_number' => $model->invoice_number,
+          'order_number' => $model->order_number,
+          'invoice_status_code' => $model->invoice_status_code,
+          'invoiced_at' => $model->invoiced_at->toIso8601String(),
+          'due_at' => $model->due_at->toIso8601String(),
+          'amount' => $model->amount,
+          'currency_code' => $model->currency_code,
+          'currency_rate' => $model->currency_rate,
+          'customer_id' => $model->customer_id,
+          'customer_name' => $model->customer_name,
+          'customer_email' => $model->customer_email,
+          'customer_tax_number' => $model->customer_tax_number,
+          'customer_phone' => $model->customer_phone,
+          'customer_address' => $model->customer_address,
+          'notes' => $model->notes,
+          'attachment' => $model->attachment,
+          'created_at' => $model->created_at->toIso8601String(),
+          'updated_at' => $model->updated_at->toIso8601String(),
         ];
     }
 

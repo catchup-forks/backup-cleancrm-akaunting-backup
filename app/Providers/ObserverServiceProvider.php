@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Providers;
 
 use App\Models\Company\Company;
-
 use Illuminate\Support\ServiceProvider;
 
 class ObserverServiceProvider extends ServiceProvider

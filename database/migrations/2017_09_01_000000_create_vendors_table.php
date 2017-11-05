@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -26,7 +25,6 @@ class CreateVendorsTable extends Migration
             $table->boolean('enabled');
             $table->timestamps();
             $table->softDeletes();
-
             $table->index('company_id');
             $table->unique(['company_id', 'email', 'deleted_at']);
         });

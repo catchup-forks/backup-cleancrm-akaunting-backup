@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -18,7 +17,6 @@ class Roles extends Controller
     public function index()
     {
         $roles = Role::collect();
-
         return view('auth.roles.index', compact('roles'));
     }
 
@@ -30,14 +28,13 @@ class Roles extends Controller
     public function create()
     {
         $permissions = Permission::all();
-
         return view('auth.roles.create', compact('permissions'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  Request $request
      *
      * @return Response
      */
@@ -45,21 +42,17 @@ class Roles extends Controller
     {
         // Create role
         $role = Role::create($request->all());
-
         // Attach permissions
         $role->permissions()->attach($request['permissions']);
-
         $message = trans('messages.success.added', ['type' => trans_choice('general.roles', 1)]);
-
         flash($message)->success();
-
         return redirect('auth/roles');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Role  $role
+     * @param  Role $role
      *
      * @return Response
      */
@@ -67,17 +60,15 @@ class Roles extends Controller
     {
         //$permissions = Permission::all()->sortBy('display_name');
         $permissions = Permission::all();
-
         $rolePermissions = $role->permissions->pluck('id', 'id')->toArray();
-
         return view('auth.roles.edit', compact('role', 'permissions', 'rolePermissions'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  Role  $role
-     * @param  Request  $request
+     * @param  Role $role
+     * @param  Request $request
      *
      * @return Response
      */
@@ -85,32 +76,25 @@ class Roles extends Controller
     {
         // Update role
         $role->update($request->all());
-
         // Sync permissions
         $role->permissions()->sync($request['permissions']);
-
         $message = trans('messages.success.updated', ['type' => trans_choice('general.roles', 1)]);
-
         flash($message)->success();
-
         return redirect('auth/roles');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Role  $role
+     * @param  Role $role
      *
      * @return Response
      */
     public function destroy(Role $role)
     {
         $role->delete();
-
         $message = trans('messages.success.deleted', ['type' => trans_choice('general.roles', 1)]);
-
         flash($message)->success();
-
         return redirect('auth/roles');
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
@@ -16,27 +15,23 @@ class ViewComposerServiceProvider extends ServiceProvider
     {
         // All
         View::composer(
-            '*', 'App\Http\ViewComposers\All'
+          '*', 'App\Http\ViewComposers\All'
         );
-
         // Add company info to menu
         View::composer(
-            ['partials.admin.menu', 'partials.customer.menu'], 'App\Http\ViewComposers\Menu'
+          ['partials.admin.menu', 'partials.customer.menu'], 'App\Http\ViewComposers\Menu'
         );
-
         // Add notifications to header
         View::composer(
-            ['partials.admin.header', 'partials.customer.header'], 'App\Http\ViewComposers\Header'
+          ['partials.admin.header', 'partials.customer.header'], 'App\Http\ViewComposers\Header'
         );
-
         // Add limits to index
         View::composer(
-            '*.index', 'App\Http\ViewComposers\Index'
+          '*.index', 'App\Http\ViewComposers\Index'
         );
-
         // Add Modules
         View::composer(
-            'modules.*', 'App\Http\ViewComposers\Modules'
+          'modules.*', 'App\Http\ViewComposers\Modules'
         );
     }
 

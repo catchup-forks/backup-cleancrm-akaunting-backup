@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Listeners\Auth;
 
 use Auth;
@@ -18,7 +17,6 @@ class Login
     {
         // Get company
         $company = Auth::user()->companies()->first();
-
         session(['company_id' => $company->id]);
     }
 }

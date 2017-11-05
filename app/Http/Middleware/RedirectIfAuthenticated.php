@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Auth;
@@ -10,9 +9,9 @@ class RedirectIfAuthenticated
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $guard
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
+     * @param  string|null $guard
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
@@ -21,10 +20,8 @@ class RedirectIfAuthenticated
             if (Auth::user()->customer) {
                 return redirect('/customers');
             }
-
             return redirect('/');
         }
-
         return $next($request);
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -19,11 +18,9 @@ class CreateModulesTable extends Migration
             $table->integer('status');
             $table->timestamps();
             $table->softDeletes();
-
             $table->index('company_id');
             $table->unique(['company_id', 'alias', 'deleted_at']);
         });
-
         Schema::create('module_histories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id');
@@ -33,7 +30,6 @@ class CreateModulesTable extends Migration
             $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
             $table->index(['company_id', 'module_id']);
         });
     }

@@ -1,5 +1,4 @@
 <?php
-
 return [
-    'all' => 'All Customers',
+  'all' => 'All Customers',
 ];

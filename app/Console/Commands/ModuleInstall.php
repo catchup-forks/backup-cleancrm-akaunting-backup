@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Console\Commands;
 
 use App\Events\ModuleInstalled;
@@ -32,32 +31,25 @@ class ModuleInstall extends Command
     public function handle()
     {
         $request = [
-            'company_id' => $this->argument('company_id'),
-            'alias' => strtolower($this->argument('alias')),
-            'status' => '1',
+          'company_id' => $this->argument('company_id'),
+          'alias' => strtolower($this->argument('alias')),
+          'status' => '1',
         ];
-
         $model = Module::create($request);
-
         $module = LaravelModule::findByAlias($model->alias);
-
         // Add history
         $data = [
-            'company_id' => $this->argument('company_id'),
-            'module_id' => $model->id,
-            'category' => $module->get('category'),
-            'version' => $module->get('version'),
-            'description' => trans('modules.history.installed', ['module' => $module->get('name')]),
+          'company_id' => $this->argument('company_id'),
+          'module_id' => $model->id,
+          'category' => $module->get('category'),
+          'version' => $module->get('version'),
+          'description' => trans('modules.history.installed', ['module' => $module->get('name')]),
         ];
-
         ModuleHistory::create($data);
-
         // Update database
         $this->call('migrate', ['--force' => true]);
-
         // Trigger event
         event(new ModuleInstalled($model->alias));
-
         $this->info('Module installed!');
     }
 }

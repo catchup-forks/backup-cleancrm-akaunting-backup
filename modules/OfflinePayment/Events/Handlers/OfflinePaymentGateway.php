@@ -1,5 +1,4 @@
 <?php
-
 namespace Modules\OfflinePayment\Events\Handlers;
 
 use App\Events\PaymentGatewayListing;

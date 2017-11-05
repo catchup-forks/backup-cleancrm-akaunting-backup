@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Company;
 
 use Auth;
@@ -138,24 +137,18 @@ class Company extends Eloquent
     public function setSettings()
     {
         $settings = $this->settings;
-
         foreach ($settings as $setting) {
             list($group, $key) = explode('.', $setting->getAttribute('key'));
-
             // Load only general settings
             if ($group != 'general') {
                 continue;
             }
-
             $value = $setting->getAttribute('value');
-
             if (($key == 'company_logo') && empty($value)) {
                 $value = 'public/img/company.png';
             }
-
             $this->setAttribute($key, $value);
         }
-
         // Set default default company logo if empty
         if ($this->getAttribute('company_logo') == '') {
             $this->setAttribute('company_logo', 'public/img/company.png');
@@ -170,13 +163,10 @@ class Company extends Eloquent
     public function modelFilter()
     {
         list($folder, $file) = explode('/', \Route::current()->uri());
-
         if (empty($folder) || empty($file)) {
             return $this->provideFilter();
         }
-
-        $class = '\App\Filters\\' . ucfirst($folder) .'\\' . ucfirst($file);
-
+        $class = '\App\Filters\\' . ucfirst($folder) . '\\' . ucfirst($file);
         return $this->provideFilter($class);
     }
 
@@ -191,10 +181,8 @@ class Company extends Eloquent
     public function scopeCollect($query, $sort = 'name')
     {
         $request = request();
-
         $input = $request->input();
         $limit = $request->get('limit', setting('general.list_limit', '25'));
-
         return Auth::user()->companies()->filter($input)->sortable($sort)->paginate($limit);
     }
 
@@ -209,9 +197,9 @@ class Company extends Eloquent
     public function nameSortable($query, $direction)
     {
         return $query->join('settings', 'companies.id', '=', 'settings.company_id')
-            ->where('key', 'general.company_name')
-            ->orderBy('value', $direction)
-            ->select('companies.*');
+          ->where('key', 'general.company_name')
+          ->orderBy('value', $direction)
+          ->select('companies.*');
     }
 
     /**
@@ -225,8 +213,8 @@ class Company extends Eloquent
     public function emailSortable($query, $direction)
     {
         return $query->join('settings', 'companies.id', '=', 'settings.company_id')
-            ->where('key', 'general.company_email')
-            ->orderBy('value', $direction)
-            ->select('companies.*');
+          ->where('key', 'general.company_email')
+          ->orderBy('value', $direction)
+          ->select('companies.*');
     }
 }

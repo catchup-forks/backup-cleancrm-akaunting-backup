@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Expense;
 
 use App\Models\Model;
@@ -20,7 +19,25 @@ class Bill extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_id', 'bill_number', 'order_number', 'bill_status_code', 'billed_at', 'due_at', 'amount', 'currency_code', 'currency_rate', 'vendor_id', 'vendor_name', 'vendor_email', 'vendor_tax_number', 'vendor_phone', 'vendor_address', 'notes', 'attachment'];
+    protected $fillable = [
+      'company_id',
+      'bill_number',
+      'order_number',
+      'bill_status_code',
+      'billed_at',
+      'due_at',
+      'amount',
+      'currency_code',
+      'currency_rate',
+      'vendor_id',
+      'vendor_name',
+      'vendor_email',
+      'vendor_tax_number',
+      'vendor_phone',
+      'vendor_address',
+      'notes',
+      'attachment'
+    ];
 
     /**
      * Sortable columns.
@@ -35,13 +52,13 @@ class Bill extends Model
      * @var array
      */
     protected $searchableColumns = [
-        'bill_number'    => 10,
-        'order_number'   => 10,
-        'vendor_name'    => 10,
-        'vendor_email'   => 5,
-        'vendor_phone'   => 2,
-        'vendor_address' => 1,
-        'notes'          => 2,
+      'bill_number' => 10,
+      'order_number' => 10,
+      'vendor_name' => 10,
+      'vendor_email' => 5,
+      'vendor_phone' => 2,
+      'vendor_address' => 1,
+      'notes' => 2,
     ];
 
     public function vendor()
@@ -82,23 +99,23 @@ class Bill extends Model
     /**
      * Convert amount to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setAmountAttribute($value)
     {
-        $this->attributes['amount'] = (double) $value;
+        $this->attributes['amount'] = (double)$value;
     }
 
     /**
      * Convert currency rate to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setCurrencyRateAttribute($value)
     {
-        $this->attributes['currency_rate'] = (double) $value;
+        $this->attributes['currency_rate'] = (double)$value;
     }
 
     public function scopeDue($query, $date)

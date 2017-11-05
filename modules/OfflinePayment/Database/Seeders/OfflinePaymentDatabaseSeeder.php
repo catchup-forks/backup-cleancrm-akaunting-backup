@@ -1,5 +1,4 @@
 <?php
-
 namespace Modules\OfflinePayment\Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -16,30 +15,25 @@ class OfflinePaymentDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-
         $this->create();
-
         Model::reguard();
     }
 
     private function create()
     {
         $methods = array();
-
         $methods[] = array(
-            'code' => 'offlinepayment.cash.1',
-            'name' => 'Cash',
-            'order' => '1',
-            'description' => null,
+          'code' => 'offlinepayment.cash.1',
+          'name' => 'Cash',
+          'order' => '1',
+          'description' => null,
         );
-
         $methods[] = array(
-            'code' => 'offlinepayment.bank_transfer.2',
-            'name' => 'Bank Transfer',
-            'order' => '2',
-            'description' => null,
+          'code' => 'offlinepayment.bank_transfer.2',
+          'name' => 'Bank Transfer',
+          'order' => '2',
+          'description' => null,
         );
-
         Setting::set('offlinepayment.methods', json_encode($methods));
     }
 }

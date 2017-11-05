@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests\Setting;
 
 use App\Http\Requests\Request;
@@ -24,9 +23,9 @@ class Category extends Request
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'type' => 'required|string',
-            'color' => 'required|string',
+          'name' => 'required|string',
+          'type' => 'required|string',
+          'color' => 'required|string',
         ];
     }
 }

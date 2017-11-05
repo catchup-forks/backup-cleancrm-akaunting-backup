@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Filters\Expenses;
 
 use EloquentFilter\ModelFilter;

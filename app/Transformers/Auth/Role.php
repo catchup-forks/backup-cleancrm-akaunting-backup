@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Transformers\Auth;
 
 use App\Models\Auth\Role as Model;
@@ -19,11 +18,11 @@ class Role extends TransformerAbstract
     public function transform(Model $model)
     {
         return [
-            'id' => $model->id,
-            'name' => $model->display_name,
-            'code' => $model->name,
-            'created_at' => $model->created_at->toIso8601String(),
-            'updated_at' => $model->updated_at->toIso8601String(),
+          'id' => $model->id,
+          'name' => $model->display_name,
+          'code' => $model->name,
+          'created_at' => $model->created_at->toIso8601String(),
+          'updated_at' => $model->updated_at->toIso8601String(),
         ];
     }
 

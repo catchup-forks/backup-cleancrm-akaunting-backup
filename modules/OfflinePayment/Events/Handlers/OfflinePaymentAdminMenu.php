@@ -1,5 +1,4 @@
 <?php
-
 namespace Modules\OfflinePayment\Events\Handlers;
 
 use App\Events\AdminMenuCreated;
@@ -16,7 +15,7 @@ class OfflinePaymentAdminMenu
     {
         // Add child to existing item
         $item = $event->menu->whereTitle(trans_choice('general.settings', 2));
-
-        $item->url('apps/offlinepayment/settings', trans('offlinepayment::offlinepayment.offlinepayment'), 4, ['icon' => 'fa fa-angle-double-right']);
+        $item->url('apps/offlinepayment/settings', trans('offlinepayment::offlinepayment.offlinepayment'), 4,
+          ['icon' => 'fa fa-angle-double-right']);
     }
 }

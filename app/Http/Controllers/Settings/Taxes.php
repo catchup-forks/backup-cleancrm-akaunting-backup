@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
@@ -17,7 +16,6 @@ class Taxes extends Controller
     public function index()
     {
         $taxes = Tax::collect();
-
         return view('settings.taxes.index', compact('taxes', 'rates'));
     }
 
@@ -34,25 +32,22 @@ class Taxes extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  Request $request
      *
      * @return Response
      */
     public function store(Request $request)
     {
         Tax::create($request->all());
-
         $message = trans('messages.success.added', ['type' => trans_choice('general.tax_rates', 1)]);
-
         flash($message)->success();
-
         return redirect('settings/taxes');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Tax  $tax
+     * @param  Tax $tax
      *
      * @return Response
      */
@@ -64,32 +59,27 @@ class Taxes extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Tax  $tax
-     * @param  Request  $request
+     * @param  Tax $tax
+     * @param  Request $request
      *
      * @return Response
      */
     public function update(Tax $tax, Request $request)
     {
         $relationships = $this->countRelationships($tax, [
-            'items' => 'items',
-            'invoice_items' => 'invoices',
-            'bill_items' => 'bills',
+          'items' => 'items',
+          'invoice_items' => 'invoices',
+          'bill_items' => 'bills',
         ]);
-
         if (empty($relationships) || $request['enabled']) {
             $tax->update($request->all());
-
             $message = trans('messages.success.updated', ['type' => trans_choice('general.tax_rates', 1)]);
-
             flash($message)->success();
-
             return redirect('settings/taxes');
         } else {
-            $message = trans('messages.warning.disabled', ['name' => $tax->name, 'text' => implode(', ', $relationships)]);
-
+            $message = trans('messages.warning.disabled',
+              ['name' => $tax->name, 'text' => implode(', ', $relationships)]);
             flash($message)->warning();
-
             return redirect('settings/taxes/' . $tax->id . '/edit');
         }
     }
@@ -97,30 +87,26 @@ class Taxes extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Tax  $tax
+     * @param  Tax $tax
      *
      * @return Response
      */
     public function destroy(Tax $tax)
     {
         $relationships = $this->countRelationships($tax, [
-            'items' => 'items',
-            'invoice_items' => 'invoices',
-            'bill_items' => 'bills',
+          'items' => 'items',
+          'invoice_items' => 'invoices',
+          'bill_items' => 'bills',
         ]);
-
         if (empty($relationships)) {
             $tax->delete();
-
             $message = trans('messages.success.deleted', ['type' => trans_choice('general.taxes', 1)]);
-
             flash($message)->success();
         } else {
-            $message = trans('messages.warning.deleted', ['name' => $tax->name, 'text' => implode(', ', $relationships)]);
-
+            $message = trans('messages.warning.deleted',
+              ['name' => $tax->name, 'text' => implode(', ', $relationships)]);
             flash($message)->warning();
         }
-
         return redirect('settings/taxes');
     }
 }

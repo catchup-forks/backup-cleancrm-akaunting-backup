@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -28,7 +27,6 @@ class CreatePaymentsTable extends Migration
             $table->string('attachment')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
             $table->index('company_id');
         });
     }

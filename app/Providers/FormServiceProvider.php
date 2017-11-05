@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Providers;
 
 use Form;
@@ -16,47 +15,85 @@ class FormServiceProvider extends ServiceProvider
     {
         // Form components
         Form::component('textGroup', 'partials.form.text_group', [
-            'name', 'text', 'icon', 'attributes' => ['required' => 'required'], 'value' => null, 'col' => 'col-md-6',
+          'name',
+          'text',
+          'icon',
+          'attributes' => ['required' => 'required'],
+          'value' => null,
+          'col' => 'col-md-6',
         ]);
-
         Form::component('emailGroup', 'partials.form.email_group', [
-            'name', 'text', 'icon', 'attributes' => ['required' => 'required'], 'value' => null, 'col' => 'col-md-6',
+          'name',
+          'text',
+          'icon',
+          'attributes' => ['required' => 'required'],
+          'value' => null,
+          'col' => 'col-md-6',
         ]);
-
         Form::component('passwordGroup', 'partials.form.password_group', [
-            'name', 'text', 'icon', 'attributes' => ['required' => 'required'], 'value' => null, 'col' => 'col-md-6',
+          'name',
+          'text',
+          'icon',
+          'attributes' => ['required' => 'required'],
+          'value' => null,
+          'col' => 'col-md-6',
         ]);
-
         Form::component('selectGroup', 'partials.form.select_group', [
-            'name', 'text', 'icon', 'values', 'selected' => null, 'attributes' => ['required' => 'required'], 'col' => 'col-md-6',
+          'name',
+          'text',
+          'icon',
+          'values',
+          'selected' => null,
+          'attributes' => ['required' => 'required'],
+          'col' => 'col-md-6',
         ]);
-
         Form::component('textareaGroup', 'partials.form.textarea_group', [
-            'name', 'text', 'value' => null, 'attributes' => ['rows' => '3'], 'col' => 'col-md-12',
+          'name',
+          'text',
+          'value' => null,
+          'attributes' => ['rows' => '3'],
+          'col' => 'col-md-12',
         ]);
-
         Form::component('radioGroup', 'partials.form.radio_group', [
-            'name', 'text', 'enable' => trans('general.yes'), 'disable' => trans('general.no'), 'attributes' => [], 'col' => 'col-md-6',
+          'name',
+          'text',
+          'enable' => trans('general.yes'),
+          'disable' => trans('general.no'),
+          'attributes' => [],
+          'col' => 'col-md-6',
         ]);
-
         Form::component('checkboxGroup', 'partials.form.checkbox_group', [
-            'name', 'text', 'items' => [], 'value' => 'name', 'id' => 'id', 'attributes' => ['required' => 'required'], 'col' => 'col-md-12',
+          'name',
+          'text',
+          'items' => [],
+          'value' => 'name',
+          'id' => 'id',
+          'attributes' => ['required' => 'required'],
+          'col' => 'col-md-12',
         ]);
-
         Form::component('fileGroup', 'partials.form.file_group', [
-            'name', 'text', 'attributes' => [], 'col' => 'col-md-6',
+          'name',
+          'text',
+          'attributes' => [],
+          'col' => 'col-md-6',
         ]);
-
         Form::component('deleteButton', 'partials.form.delete_button', [
-            'item', 'url', 'text' => '', 'value' => 'name', 'id' => 'id',
+          'item',
+          'url',
+          'text' => '',
+          'value' => 'name',
+          'id' => 'id',
         ]);
-
         Form::component('deleteLink', 'partials.form.delete_link', [
-            'item', 'url', 'text' => '', 'value' => 'name', 'id' => 'id',
+          'item',
+          'url',
+          'text' => '',
+          'value' => 'name',
+          'id' => 'id',
         ]);
-
         Form::component('saveButtons', 'partials.form.save_buttons', [
-            'cancel', 'col' => 'col-md-12',
+          'cancel',
+          'col' => 'col-md-12',
         ]);
     }
 

@@ -1,9 +1,6 @@
 <?php
-
 return [
-
-    'code'                  => 'Código',
-    'rate'                  => 'Cotización',
-    'default'               => 'Moneda Predeterminada',
-
+  'code' => 'Código',
+  'rate' => 'Cotización',
+  'default' => 'Moneda Predeterminada',
 ];

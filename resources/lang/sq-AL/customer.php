@@ -1,5 +1,4 @@
 <?php
-
 return [
-    'all' => 'Të gjithë Konsumatorët',
+  'all' => 'Të gjithë Konsumatorët',
 ];

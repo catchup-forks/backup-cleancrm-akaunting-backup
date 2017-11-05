@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Listeners\Auth;
 
 use Jenssegers\Date\Date;
@@ -19,11 +18,8 @@ class Logout
         if (empty($event->user)) {
             return;
         }
-        
         $event->user->last_logged_in_at = Date::now();
-
         $event->user->save();
-
         session()->forget('company_id');
     }
 }

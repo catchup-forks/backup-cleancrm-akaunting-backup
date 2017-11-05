@@ -1,8 +1,5 @@
 <?php
-
 return [
-
-    'rate'                  => 'Oran',
-    'rate_percent'          => 'Oran (%)',
-
+  'rate' => 'Oran',
+  'rate_percent' => 'Oran (%)',
 ];

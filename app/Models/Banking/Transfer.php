@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Banking;
 
 use App\Models\Model;
@@ -47,6 +46,7 @@ class Transfer extends Model
 
     public function getDynamicConvertedAmount($format = false)
     {
-        return $this->dynamicConvert($this->default_currency_code, $this->amount, $this->currency_code, $this->currency_rate, $format);
+        return $this->dynamicConvert($this->default_currency_code, $this->amount, $this->currency_code,
+          $this->currency_rate, $format);
     }
 }

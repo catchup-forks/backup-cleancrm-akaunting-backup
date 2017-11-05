@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests\Setting;
 
 use App\Http\Requests\Request;
@@ -24,8 +23,8 @@ class Tax extends Request
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'rate' => 'required',
+          'name' => 'required|string',
+          'rate' => 'required',
         ];
     }
 }

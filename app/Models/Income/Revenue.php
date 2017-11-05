@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Income;
 
 use App\Models\Model;
@@ -18,14 +17,27 @@ class Revenue extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_id', 'account_id', 'paid_at', 'amount', 'currency_code', 'currency_rate', 'customer_id', 'description', 'category_id', 'payment_method', 'reference', 'attachment'];
+    protected $fillable = [
+      'company_id',
+      'account_id',
+      'paid_at',
+      'amount',
+      'currency_code',
+      'currency_rate',
+      'customer_id',
+      'description',
+      'category_id',
+      'payment_method',
+      'reference',
+      'attachment'
+    ];
 
     /**
      * Sortable columns.
      *
      * @var array
      */
-    public $sortable = ['paid_at', 'amount','category_id', 'account', 'payment_method'];
+    public $sortable = ['paid_at', 'amount', 'category_id', 'account', 'payment_method'];
 
     /**
      * Searchable rules.
@@ -33,11 +45,11 @@ class Revenue extends Model
      * @var array
      */
     protected $searchableColumns = [
-        'invoice_number' => 10,
-        'order_number'   => 10,
-        'customer_name'  => 10,
-        'customer_email' => 5,
-        'notes'          => 2,
+      'invoice_number' => 10,
+      'order_number' => 10,
+      'customer_name' => 10,
+      'customer_email' => 5,
+      'notes' => 2,
     ];
 
     public function user()
@@ -73,23 +85,23 @@ class Revenue extends Model
     /**
      * Convert amount to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setAmountAttribute($value)
     {
-        $this->attributes['amount'] = (double) $value;
+        $this->attributes['amount'] = (double)$value;
     }
 
     /**
      * Convert currency rate to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setCurrencyRateAttribute($value)
     {
-        $this->attributes['currency_rate'] = (double) $value;
+        $this->attributes['currency_rate'] = (double)$value;
     }
 
     public function scopeLatest($query)

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Modules;
 
 use App\Http\Controllers\Controller;
@@ -18,11 +17,9 @@ class Home extends Controller
     public function index()
     {
         $this->checkApiToken();
-
         $paid = $this->getPaidModules();
         $new = $this->getNewModules();
         $free = $this->getFreeModules();
-
         return view('modules.home.index', compact('paid', 'new', 'free'));
     }
 }

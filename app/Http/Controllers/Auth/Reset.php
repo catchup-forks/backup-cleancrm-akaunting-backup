@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -20,7 +18,6 @@ class Reset extends Controller
     | explore this trait and override any methods you wish to tweak.
     |
     */
-
     use ResetsPasswords;
 
     /**
@@ -43,41 +40,38 @@ class Reset extends Controller
     public function create(Request $request, $token = null)
     {
         return view('auth.reset.create')->with(
-            ['token' => $token, 'email' => $request->email]
+          ['token' => $token, 'email' => $request->email]
         );
     }
 
     public function store(Request $request)
     {
         $this->validate($request, $this->rules(), $this->validationErrorMessages());
-
         // Here we will attempt to reset the user's password. If it is successful we
         // will update the password on an actual user model and persist it to the
         // database. Otherwise we will parse the error and return the response.
         $response = $this->broker()->reset(
-            $this->credentials($request), function ($user, $password) {
+          $this->credentials($request), function ($user, $password) {
             $this->resetPassword($user, $password);
         }
         );
-
         // If the password was successfully reset, we will redirect the user back to
         // the application's home authenticated view. If there is an error we can
         // redirect them back to where they came from with their error message.
         return $response == Password::PASSWORD_RESET
-            ? $this->sendResetResponse($response)
-            : $this->sendResetFailedResponse($request, $response);
+          ? $this->sendResetResponse($response)
+          : $this->sendResetFailedResponse($request, $response);
     }
 
     /**
      * Get the response for a successful password reset.
      *
-     * @param  string  $response
+     * @param  string $response
      * @return \Illuminate\Http\RedirectResponse
      */
     protected function sendResetResponse($response)
     {
         flash(trans($response))->success();
-
         return redirect($this->redirectTo);
     }
 
@@ -85,13 +79,13 @@ class Reset extends Controller
      * Get the response for a failed password reset.
      *
      * @param  \Illuminate\Http\Request
-     * @param  string  $response
+     * @param  string $response
      * @return \Illuminate\Http\RedirectResponse
      */
     protected function sendResetFailedResponse(Request $request, $response)
     {
         return redirect()->back()
-            ->withInput($request->only('email'))
-            ->withErrors(['email' => trans($response)]);
+          ->withInput($request->only('email'))
+          ->withErrors(['email' => trans($response)]);
     }
 }

@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Http\Controllers\Customers;
 
 use App\Http\Controllers\Controller;
-
 use Auth;
 
 class Dashboard extends Controller
@@ -17,7 +15,6 @@ class Dashboard extends Controller
     public function index()
     {
         $user = Auth::user()->customer;
-
         return view('customers.dashboard.index', compact('user'));
     }
 }

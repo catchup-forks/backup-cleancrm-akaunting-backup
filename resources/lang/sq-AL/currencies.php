@@ -1,9 +1,6 @@
 <?php
-
 return [
-
-    'code'                  => 'Kodi',
-    'rate'                  => 'Normë',
-    'default'               => 'Valuta e Parazgjedhur',
-
+  'code' => 'Kodi',
+  'rate' => 'Normë',
+  'default' => 'Valuta e Parazgjedhur',
 ];

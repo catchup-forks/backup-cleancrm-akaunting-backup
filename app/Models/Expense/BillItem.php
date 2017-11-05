@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Expense;
 
 use App\Models\Model;
@@ -17,7 +16,18 @@ class BillItem extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_id', 'bill_id', 'item_id', 'name', 'sku', 'quantity', 'price', 'total', 'tax', 'tax_id'];
+    protected $fillable = [
+      'company_id',
+      'bill_id',
+      'item_id',
+      'name',
+      'sku',
+      'quantity',
+      'price',
+      'total',
+      'tax',
+      'tax_id'
+    ];
 
     public function bill()
     {
@@ -37,22 +47,22 @@ class BillItem extends Model
     /**
      * Convert price to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setPriceAttribute($value)
     {
-        $this->attributes['price'] = (double) $value;
+        $this->attributes['price'] = (double)$value;
     }
 
     /**
      * Convert total to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setTotalAttribute($value)
     {
-        $this->attributes['total'] = (double) $value;
+        $this->attributes['total'] = (double)$value;
     }
 }

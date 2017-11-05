@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\ApiController;
@@ -20,14 +19,13 @@ class Roles extends ApiController
     public function index()
     {
         $roles = Role::with('permissions')->collect();
-
         return $this->response->paginator($roles, new Transformer());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  Role  $role
+     * @param  Role $role
      * @return \Dingo\Api\Http\Response
      */
     public function show(Role $role)
@@ -44,12 +42,10 @@ class Roles extends ApiController
     public function store(Request $request)
     {
         $role = Role::create($request->input());
-
         if ($request->has('permissions')) {
             $role->permissions()->attach($request->get('permissions'));
         }
-
-        return $this->response->created(url('api/roles/'.$role->id));
+        return $this->response->created(url('api/roles/' . $role->id));
     }
 
     /**
@@ -62,24 +58,21 @@ class Roles extends ApiController
     public function update(Role $role, Request $request)
     {
         $role->update($request->all());
-
         if ($request->has('permissions')) {
             $role->permissions()->attach($request->get('permissions'));
         }
-
         return $this->response->item($role->fresh(), new Transformer());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Role  $role
+     * @param  Role $role
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Role $role)
     {
         $role->delete();
-
         return $this->response->noContent();
     }
 }

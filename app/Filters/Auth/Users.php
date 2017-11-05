@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Filters\Auth;
 
 use EloquentFilter\ModelFilter;

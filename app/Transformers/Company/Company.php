@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Transformers\Company;
 
 use App\Models\Company\Company as Model;
@@ -14,20 +13,20 @@ class Company extends TransformerAbstract
     public function transform(Model $model)
     {
         return [
-            'id' => $model->id,
-            'name' => $model->company_name,
-            'email' => $model->company_email,
-            'domain' => $model->domain,
-            'address' => $model->company_address,
-            'logo' => $model->company_logo,
-            'default_account' => $model->default_account,
-            'default_currency' => $model->default_currency,
-            'default_tax' => $model->default_tax,
-            'default_payment_method' => $model->default_payment_method,
-            'default_language' => $model->default_language,
-            'enabled' => $model->enabled,
-            'created_at' => $model->created_at->toIso8601String(),
-            'updated_at' => $model->updated_at->toIso8601String(),
+          'id' => $model->id,
+          'name' => $model->company_name,
+          'email' => $model->company_email,
+          'domain' => $model->domain,
+          'address' => $model->company_address,
+          'logo' => $model->company_logo,
+          'default_account' => $model->default_account,
+          'default_currency' => $model->default_currency,
+          'default_tax' => $model->default_tax,
+          'default_payment_method' => $model->default_payment_method,
+          'default_language' => $model->default_language,
+          'enabled' => $model->enabled,
+          'created_at' => $model->created_at->toIso8601String(),
+          'updated_at' => $model->updated_at->toIso8601String(),
         ];
     }
 }

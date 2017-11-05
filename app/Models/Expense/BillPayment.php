@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Expense;
 
 use App\Models\Model;
@@ -19,7 +18,19 @@ class BillPayment extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_id', 'bill_id', 'account_id', 'paid_at', 'amount', 'currency_code', 'currency_rate', 'description', 'payment_method', 'reference', 'attachment'];
+    protected $fillable = [
+      'company_id',
+      'bill_id',
+      'account_id',
+      'paid_at',
+      'amount',
+      'currency_code',
+      'currency_rate',
+      'description',
+      'payment_method',
+      'reference',
+      'attachment'
+    ];
 
     public function account()
     {
@@ -49,22 +60,22 @@ class BillPayment extends Model
     /**
      * Convert amount to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setAmountAttribute($value)
     {
-        $this->attributes['amount'] = (double) $value;
+        $this->attributes['amount'] = (double)$value;
     }
 
     /**
      * Convert currency rate to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setCurrencyRateAttribute($value)
     {
-        $this->attributes['currency_rate'] = (double) $value;
+        $this->attributes['currency_rate'] = (double)$value;
     }
 }

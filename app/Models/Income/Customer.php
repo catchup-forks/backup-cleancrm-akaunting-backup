@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Income;
 
 use App\Models\Model;
@@ -18,7 +17,18 @@ class Customer extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_id', 'user_id', 'name', 'email', 'tax_number', 'phone', 'address', 'website', 'currency_code', 'enabled'];
+    protected $fillable = [
+      'company_id',
+      'user_id',
+      'name',
+      'email',
+      'tax_number',
+      'phone',
+      'address',
+      'website',
+      'currency_code',
+      'enabled'
+    ];
 
     /**
      * Sortable columns.
@@ -33,11 +43,11 @@ class Customer extends Model
      * @var array
      */
     protected $searchableColumns = [
-        'name'    => 10,
-        'email'   => 5,
-        'phone'   => 2,
-        'website' => 2,
-        'address' => 1,
+      'name' => 10,
+      'email' => 5,
+      'phone' => 2,
+      'website' => 2,
+      'address' => 1,
     ];
 
     public function invoices()

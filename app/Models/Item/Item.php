@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Item;
 
 use App\Models\Model;
@@ -19,7 +18,19 @@ class Item extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_id', 'name', 'sku', 'description', 'sale_price', 'purchase_price', 'quantity', 'category_id', 'tax_id', 'picture', 'enabled'];
+    protected $fillable = [
+      'company_id',
+      'name',
+      'sku',
+      'description',
+      'sale_price',
+      'purchase_price',
+      'quantity',
+      'category_id',
+      'tax_id',
+      'picture',
+      'enabled'
+    ];
 
     /**
      * Sortable columns.
@@ -34,9 +45,9 @@ class Item extends Model
      * @var array
      */
     protected $searchableColumns = [
-        'name'        => 10,
-        'sku'         => 5,
-        'description' => 2,
+      'name' => 10,
+      'sku' => 5,
+      'description' => 2,
     ];
 
     public function category()
@@ -62,23 +73,23 @@ class Item extends Model
     /**
      * Convert sale price to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setSalePriceAttribute($value)
     {
-        $this->attributes['sale_price'] = (double) $value;
+        $this->attributes['sale_price'] = (double)$value;
     }
 
     /**
      * Convert purchase price to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setPurchasePriceAttribute($value)
     {
-        $this->attributes['purchase_price'] = (double) $value;
+        $this->attributes['purchase_price'] = (double)$value;
     }
 
     public static function getItems($filter_data = array())
@@ -86,15 +97,11 @@ class Item extends Model
         if (empty($filter_data)) {
             return Item::all();
         }
-
         $query = Item::select('id as item_id', 'name', 'sale_price', 'purchase_price', 'tax_id');
-
         $query->where('quantity', '>', '0');
-
         foreach ($filter_data as $key => $value) {
-            $query->where($key, 'LIKE', "%" . $value  . "%");
+            $query->where($key, 'LIKE', "%" . $value . "%");
         }
-
         return $query->get();
     }
 
@@ -109,7 +116,7 @@ class Item extends Model
     public function categorySortable($query, $direction)
     {
         return $query->join('categories', 'categories.id', '=', 'items.category_id')
-            ->orderBy('name', $direction)
-            ->select('items.*');
+          ->orderBy('name', $direction)
+          ->select('items.*');
     }
 }

@@ -1,7 +1,5 @@
 <?php
-
 return array(
-
     /*
     |----------------------------------------------------------------------
     | Auto backup mode
@@ -10,9 +8,7 @@ return array(
     | This value is used when you save your file content. If value is true,
     | the original file will be backed up before save.
     */
-
-    'autoBackup' => false,
-
+  'autoBackup' => false,
     /*
     |----------------------------------------------------------------------
     | Backup location
@@ -21,7 +17,5 @@ return array(
     | This value is used when you backup your file. This value is the sub
     | path from root folder of project application.
     */
-
-    'backupPath' => base_path('storage/dotenv-editor/backups/')
-
+  'backupPath' => base_path('storage/dotenv-editor/backups/')
 );

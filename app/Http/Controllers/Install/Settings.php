@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Install;
 
 use Artisan;
@@ -26,7 +25,7 @@ class Settings extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  Request $request
      *
      * @return Response
      */
@@ -34,13 +33,10 @@ class Settings extends Controller
     {
         // Create company
         $this->createCompany($request);
-
         // Create user
         $this->createUser($request);
-
         // Make the final touches
         $this->finalTouches();
-
         // Redirect to dashboard
         return redirect('auth/login');
     }
@@ -49,15 +45,14 @@ class Settings extends Controller
     {
         // Create company
         $company = Company::create([
-            'domain' => '',
+          'domain' => '',
         ]);
-
         // Set settings
         Setting::set([
-            'general.company_name'          => $request['company_name'],
-            'general.company_email'         => $request['company_email'],
-            'general.default_currency'      => 'USD',
-            'general.default_locale'        => session('locale'),
+          'general.company_name' => $request['company_name'],
+          'general.company_email' => $request['company_email'],
+          'general.default_currency' => 'USD',
+          'general.default_locale' => session('locale'),
         ]);
         Setting::setExtraColumns(['company_id' => $company->id]);
         Setting::save();
@@ -67,15 +62,13 @@ class Settings extends Controller
     {
         // Create the user
         $user = User::create([
-            'name' => $request[''],
-            'email' => $request['user_email'],
-            'password' => $request['user_password'],
-            'locale' => session('locale'),
+          'name' => $request[''],
+          'email' => $request['user_email'],
+          'password' => $request['user_password'],
+          'locale' => session('locale'),
         ]);
-
         // Attach admin role
         $user->roles()->attach('1');
-
         // Attach company
         $user->companies()->attach('1');
     }
@@ -85,19 +78,17 @@ class Settings extends Controller
         // Caching the config and route
         //Artisan::call('config:cache');
         //Artisan::call('route:cache');
-
         // Update .env file
         DotenvEditor::setKeys([
-            [
-                'key'       => 'APP_INSTALLED',
-                'value'     => 'true',
-            ],
-            [
-                'key'       => 'APP_DEBUG',
-                'value'     => 'false',
-            ],
+          [
+            'key' => 'APP_INSTALLED',
+            'value' => 'true',
+          ],
+          [
+            'key' => 'APP_DEBUG',
+            'value' => 'false',
+          ],
         ])->save();
-
         // Rename the robots.txt file
         try {
             File::move(base_path('robots.txt.dist'), base_path('robots.txt'));

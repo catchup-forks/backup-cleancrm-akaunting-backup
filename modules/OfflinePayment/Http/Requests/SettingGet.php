@@ -1,5 +1,4 @@
 <?php
-
 namespace Modules\OfflinePayment\Http\Requests;
 
 use App\Http\Requests\Request;
@@ -24,7 +23,7 @@ class SettingGet extends Request
     public function rules()
     {
         return [
-            'code' => 'required|string',
+          'code' => 'required|string',
         ];
     }
 }

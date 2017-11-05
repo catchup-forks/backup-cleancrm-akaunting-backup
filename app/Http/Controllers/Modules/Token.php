@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Modules;
 
 use App\Http\Controllers\Controller;
@@ -21,7 +20,7 @@ class Token extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  Request $request
      *
      * @return Response
      */
@@ -29,9 +28,7 @@ class Token extends Controller
     {
         // Set Api Token
         setting()->set('general.api_token', $request['api_token']);
-
         setting()->save();
-
         return redirect('apps/home');
     }
 }

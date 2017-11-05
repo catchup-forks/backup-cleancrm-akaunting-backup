@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Filters\Banking;
 
 use EloquentFilter\ModelFilter;

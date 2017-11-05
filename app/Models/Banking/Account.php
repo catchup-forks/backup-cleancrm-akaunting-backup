@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Banking;
 
 use App\Models\Model;
@@ -23,7 +22,17 @@ class Account extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_id', 'name', 'number', 'currency_code', 'opening_balance', 'bank_name', 'bank_phone', 'bank_address', 'enabled'];
+    protected $fillable = [
+      'company_id',
+      'name',
+      'number',
+      'currency_code',
+      'opening_balance',
+      'bank_name',
+      'bank_phone',
+      'bank_address',
+      'enabled'
+    ];
 
     /**
      * Sortable columns.
@@ -38,11 +47,11 @@ class Account extends Model
      * @var array
      */
     protected $searchableColumns = [
-        'name'         => 10,
-        'number'       => 10,
-        'bank_name'    => 10,
-        'bank_phone'   => 5,
-        'bank_address' => 2,
+      'name' => 10,
+      'number' => 10,
+      'bank_name' => 10,
+      'bank_phone' => 5,
+      'bank_address' => 2,
     ];
 
     public function currency()
@@ -73,12 +82,12 @@ class Account extends Model
     /**
      * Convert opening balance to double.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setOpeningBalanceAttribute($value)
     {
-        $this->attributes['opening_balance'] = (double) $value;
+        $this->attributes['opening_balance'] = (double)$value;
     }
 
     /**
@@ -90,27 +99,22 @@ class Account extends Model
     {
         // Opening Balance
         $total = $this->opening_balance;
-
         // Sum invoices
         foreach ($this->invoice_payments as $item) {
             $total += $item->amount;
         }
-
         // Sum revenues
         foreach ($this->revenues as $item) {
             $total += $item->amount;
         }
-
         // Subtract bills
         foreach ($this->bill_payments as $item) {
             $total -= $item->amount;
         }
-
         // Subtract payments
         foreach ($this->payments as $item) {
             $total -= $item->amount;
         }
-
         return $total;
     }
 }

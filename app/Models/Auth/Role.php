@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Auth;
 
 use EloquentFilter\Filterable;
@@ -14,7 +13,7 @@ class Role extends LaratrustRole
     use LaratrustRoleTrait;
     use Filterable;
     use Sortable;
-    
+
     protected $table = 'roles';
 
     /**
@@ -39,13 +38,10 @@ class Role extends LaratrustRole
         } else {
             list($folder, $file) = explode('/', Route::current()->uri());
         }
-
         if (empty($folder) || empty($file)) {
             return $this->provideFilter();
         }
-
-        $class = '\App\Filters\\' . ucfirst($folder) .'\\' . ucfirst($file);
-
+        $class = '\App\Filters\\' . ucfirst($folder) . '\\' . ucfirst($file);
         return $this->provideFilter($class);
     }
 
@@ -60,10 +56,8 @@ class Role extends LaratrustRole
     public function scopeCollect($query, $sort = 'display_name')
     {
         $request = request();
-
         $input = $request->input();
         $limit = $request->get('limit', setting('general.list_limit', '25'));
-
         return $this->filter($input)->sortable($sort)->paginate($limit);
     }
 }

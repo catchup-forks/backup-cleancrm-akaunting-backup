@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Setting;
 
 use App\Scopes\Company;
@@ -25,7 +24,6 @@ class Setting extends Model
     protected static function boot()
     {
         parent::boot();
-
         static::addGlobalScope(new Company);
     }
 

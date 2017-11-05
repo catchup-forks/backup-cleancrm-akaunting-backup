@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -20,7 +19,6 @@ class CreateTaxesTable extends Migration
             $table->boolean('enabled');
             $table->timestamps();
             $table->softDeletes();
-
             $table->index('company_id');
         });
     }

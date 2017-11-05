@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Filters\Settings;
 
 use EloquentFilter\ModelFilter;

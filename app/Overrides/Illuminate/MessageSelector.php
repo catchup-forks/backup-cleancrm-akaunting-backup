@@ -1,5 +1,4 @@
 <?php
-
 namespace Illuminate\Translation;
 
 use Illuminate\Support\Str;
@@ -9,41 +8,36 @@ class MessageSelector
     /**
      * Select a proper translation string based on the given number.
      *
-     * @param  string  $line
-     * @param  int  $number
-     * @param  string  $locale
+     * @param  string $line
+     * @param  int $number
+     * @param  string $locale
      * @return mixed
      */
     public function choose($line, $number, $locale)
     {
         $segments = explode('|', $line);
-
         if (($value = $this->extract($segments, $number)) !== null) {
             return trim($value);
         }
-
         $segments = $this->stripConditions($segments);
-
         $pluralIndex = $this->getPluralIndex($locale, $number);
-
-        if (count($segments) == 1 || ! isset($segments[$pluralIndex])) {
+        if (count($segments) == 1 || !isset($segments[$pluralIndex])) {
             return $segments[0];
         }
-
         return $segments[$pluralIndex];
     }
 
     /**
      * Extract a translation string using inline conditions.
      *
-     * @param  array  $segments
-     * @param  int  $number
+     * @param  array $segments
+     * @param  int $number
      * @return mixed
      */
     private function extract($segments, $number)
     {
         foreach ($segments as $part) {
-            if (! is_null($line = $this->extractFromString($part, $number))) {
+            if (!is_null($line = $this->extractFromString($part, $number))) {
                 return $line;
             }
         }
@@ -52,25 +46,20 @@ class MessageSelector
     /**
      * Get the translation string if the condition matches.
      *
-     * @param  string  $part
-     * @param  int  $number
+     * @param  string $part
+     * @param  int $number
      * @return mixed
      */
     private function extractFromString($part, $number)
     {
         preg_match('/^[\{\[]([^\[\]\{\}]*)[\}\]](.*)/s', $part, $matches);
-
         if (count($matches) != 3) {
             return;
         }
-
         $condition = $matches[1];
-
         $value = $matches[2];
-
         if (Str::contains($condition, ',')) {
             list($from, $to) = explode(',', $condition, 2);
-
             if ($to == '*' && $number >= $from) {
                 return $value;
             } elseif ($from == '*' && $number <= $to) {
@@ -79,14 +68,13 @@ class MessageSelector
                 return $value;
             }
         }
-
         return $condition == $number ? $value : null;
     }
 
     /**
      * Strip the inline conditions from each segment, just leaving the text.
      *
-     * @param  array  $segments
+     * @param  array $segments
      * @return array
      */
     private function stripConditions($segments)
@@ -103,14 +91,13 @@ class MessageSelector
      * is subject to the new BSD license (http://framework.zend.com/license/new-bsd)
      * Copyright (c) 2005-2010 - Zend Technologies USA Inc. (http://www.zend.com)
      *
-     * @param  string  $locale
-     * @param  int  $number
+     * @param  string $locale
+     * @param  int $number
      * @return int
      */
     public function getPluralIndex($locale, $number)
     {
         $allowed_langs = config('localizer.allowed_langs');
-
         switch ($locale) {
             case 'az':
             case 'bo':

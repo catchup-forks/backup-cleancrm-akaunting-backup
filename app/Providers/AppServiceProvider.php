@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Providers;
 
 use Blade;
@@ -17,7 +16,6 @@ class AppServiceProvider extends ServiceProvider
     {
         // Laravel db fix
         Schema::defaultStringLength(191);
-
         // Add setting directive
         Blade::directive('setting', function ($expression) {
             return "<?php echo setting($expression); ?>";
@@ -34,7 +32,6 @@ class AppServiceProvider extends ServiceProvider
         if (env('APP_INSTALLED') && env('APP_DEBUG')) {
             $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
         }
-
         if (env('APP_ENV') !== 'production') {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
         }

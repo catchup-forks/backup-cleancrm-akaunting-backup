@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\ApiController;
@@ -20,14 +19,13 @@ class Users extends ApiController
     public function index()
     {
         $users = User::with(['companies', 'roles', 'permissions'])->collect();
-
         return $this->response->paginator($users, new Transformer());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int|string  $id
+     * @param  int|string $id
      * @return \Dingo\Api\Http\Response
      */
     public function show($id)
@@ -38,7 +36,6 @@ class Users extends ApiController
         } else {
             $user = User::with(['companies', 'roles', 'permissions'])->where('email', $id)->first();
         }
-
         return $this->response->item($user, new Transformer());
     }
 
@@ -51,14 +48,11 @@ class Users extends ApiController
     public function store(Request $request)
     {
         $user = User::create($request->input());
-
         // Attach roles
         $user->roles()->attach($request->get('roles'));
-
         // Attach companies
         $user->companies()->attach($request->get('companies'));
-
-        return $this->response->created(url('api/users/'.$user->id));
+        return $this->response->created(url('api/users/' . $user->id));
     }
 
     /**
@@ -72,26 +66,22 @@ class Users extends ApiController
     {
         // Except password as we don't want to let the users change a password from this endpoint
         $user->update($request->except('password'));
-
         // Sync roles
         $user->roles()->sync($request->get('roles'));
-
         // Sync companies
         $user->companies()->sync($request->get('companies'));
-
         return $this->response->item($user->fresh(), new Transformer());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  User  $user
+     * @param  User $user
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(User $user)
     {
         $user->delete();
-
         return $this->response->noContent();
     }
 }
