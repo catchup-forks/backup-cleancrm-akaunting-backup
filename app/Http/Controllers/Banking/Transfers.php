@@ -23,8 +23,8 @@ class Transfers extends Controller
     {
         $request = request();
         $items = Transfer::with(['payment', 'revenue', 'account'])->collect('payment.paid_at');
-        $accounts = collect(Account::enabled()->pluck('name', 'id'))
-          ->prepend(trans('general.all_type', ['type' => trans_choice('general.accounts', 2)]), '');
+        $bankaccounts = collect(Account::enabled()->pluck('name', 'id'))
+          ->prepend(trans('general.all_type', ['type' => trans_choice('general.bankaccounts', 2)]), '');
         $transfers = array();
         foreach ($items as $item) {
             $payment = $item->payment;
@@ -53,7 +53,7 @@ class Transfers extends Controller
             $sort_type = (isset($request['order']) && $request['order'] == 'asc') ? SORT_ASC : SORT_DESC;
             array_multisort($sort_order, $sort_type, $transfers);
         }
-        return view('banking.transfers.index', compact('transfers', 'items', 'accounts'));
+        return view('banking.transfers.index', compact('transfers', 'items', 'bankaccounts'));
     }
 
     /**
@@ -63,9 +63,9 @@ class Transfers extends Controller
      */
     public function create()
     {
-        $accounts = Account::enabled()->pluck('name', 'id');
+        $bankaccounts = Account::enabled()->pluck('name', 'id');
         $payment_methods = Modules::getPaymentMethods();
-        return view('banking.transfers.create', compact('accounts', 'payment_methods'));
+        return view('banking.transfers.create', compact('bankaccounts', 'payment_methods'));
     }
 
     /**
@@ -136,9 +136,9 @@ class Transfers extends Controller
         $transfer['amount'] = $revenue->amount;
         $transfer['payment_method'] = $revenue->payment_method;
         $transfer['reference'] = $revenue->reference;
-        $accounts = Account::listArray();
+        $bankaccounts = Account::listArray();
         $payment_methods = Modules::getPaymentMethods();
-        return view('banking.transfers.edit', compact('transfer', 'accounts', 'payment_methods'));
+        return view('banking.transfers.edit', compact('transfer', 'bankaccounts', 'payment_methods'));
     }
 
     /**

@@ -9,7 +9,7 @@
     {!! Form::open(['url' => 'banking/transactions', 'role' => 'form', 'method' => 'GET']) !!}
     <div class="pull-left">
       <span class="title-filter hidden-xs">{{ trans('general.search') }}:</span>
-      {!! Form::select('account', $accounts, request('account'), ['class' => 'form-control input-filter input-sm']) !!}
+      {!! Form::select('account', $bankaccounts, request('account'), ['class' => 'form-control input-filter input-sm']) !!}
       {!! Form::select('type', $types, request('type'), ['class' => 'form-control input-filter input-sm']) !!}
       {!! Form::select('category', $categories, request('category'), ['class' => 'form-control input-filter input-sm']) !!}
       {!! Form::button('<span class="fa fa-filter"></span> &nbsp;' . trans('general.filter'), ['type' => 'submit', 'class' => 'btn btn-sm btn-default btn-filter']) !!}

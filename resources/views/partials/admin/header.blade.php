@@ -83,7 +83,7 @@
                 <li>
                   <ul class="menu">
                     @permission('create-banking-accounts')
-                    <li><a href="{{ url('banking/accounts/create') }}">{{ trans_choice('general.accounts', 1) }}</a>
+                    <li><a href="{{ url('banking/bankaccounts/create') }}">{{ trans_choice('general.bankaccounts', 1) }}</a>
                     </li>
                     @endpermission
                     @permission('create-banking-transfers')

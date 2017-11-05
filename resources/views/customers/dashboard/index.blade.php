@@ -69,7 +69,7 @@
                 <th>{{ trans('general.date') }}</th>
                 <th>{{ trans('general.amount') }}</th>
                 <th>{{ trans_choice('general.categories', 1) }}</th>
-                <th>{{ trans_choice('general.accounts', 1) }}</th>
+                <th>{{ trans_choice('general.bankaccounts', 1) }}</th>
               </tr>
               </thead>
               <tbody>

@@ -58,7 +58,7 @@ class Bills extends Controller
             $paid += $item->getDynamicConvertedAmount();
         }
         $bill->paid = $paid;
-        $accounts = Account::enabled()->pluck('name', 'id');
+        $bankaccounts = Account::enabled()->pluck('name', 'id');
         $currencies = Currency::enabled()->pluck('name', 'code')->toArray();
         $account_currency_code = Account::where('id',
           setting('general.default_account'))->pluck('currency_code')->first();
@@ -66,7 +66,7 @@ class Bills extends Controller
         $categories = Category::enabled()->type('income')->pluck('name', 'id');
         $payment_methods = Modules::getPaymentMethods();
         return view('expenses.bills.show',
-          compact('bill', 'accounts', 'currencies', 'account_currency_code', 'vendors', 'categories',
+          compact('bill', 'bankaccounts', 'currencies', 'account_currency_code', 'vendors', 'categories',
             'payment_methods'));
     }
 

@@ -29,9 +29,9 @@ class Revenues extends Controller
           ->prepend(trans('general.all_type', ['type' => trans_choice('general.customers', 2)]), '');
         $categories = collect(Category::enabled()->type('income')->pluck('name', 'id'))
           ->prepend(trans('general.all_type', ['type' => trans_choice('general.categories', 2)]), '');
-        $accounts = collect(Account::enabled()->pluck('name', 'id'))
-          ->prepend(trans('general.all_type', ['type' => trans_choice('general.accounts', 2)]), '');
-        return view('incomes.revenues.index', compact('revenues', 'customers', 'categories', 'accounts'));
+        $bankaccounts = collect(Account::enabled()->pluck('name', 'id'))
+          ->prepend(trans('general.all_type', ['type' => trans_choice('general.bankaccounts', 2)]), '');
+        return view('incomes.revenues.index', compact('revenues', 'customers', 'categories', 'bankaccounts'));
     }
 
     /**
@@ -41,7 +41,7 @@ class Revenues extends Controller
      */
     public function create()
     {
-        $accounts = Account::enabled()->pluck('name', 'id');
+        $bankaccounts = Account::enabled()->pluck('name', 'id');
         $currencies = Currency::enabled()->pluck('name', 'code')->toArray();
         $account_currency_code = Account::where('id',
           setting('general.default_account'))->pluck('currency_code')->first();
@@ -49,7 +49,7 @@ class Revenues extends Controller
         $categories = Category::enabled()->type('income')->pluck('name', 'id');
         $payment_methods = Modules::getPaymentMethods();
         return view('incomes.revenues.create',
-          compact('accounts', 'currencies', 'account_currency_code', 'customers', 'categories', 'payment_methods'));
+          compact('bankaccounts', 'currencies', 'account_currency_code', 'customers', 'categories', 'payment_methods'));
     }
 
     /**
@@ -85,14 +85,14 @@ class Revenues extends Controller
      */
     public function edit(Revenue $revenue)
     {
-        $accounts = Account::enabled()->pluck('name', 'id');
+        $bankaccounts = Account::enabled()->pluck('name', 'id');
         $currencies = Currency::enabled()->pluck('name', 'code')->toArray();
         $account_currency_code = Account::where('id', $revenue->bankaccount_id)->pluck('currency_code')->first();
         $customers = Customer::enabled()->pluck('name', 'id');
         $categories = Category::enabled()->type('income')->pluck('name', 'id');
         $payment_methods = Modules::getPaymentMethods();
         return view('incomes.revenues.edit',
-          compact('revenue', 'accounts', 'currencies', 'account_currency_code', 'customers', 'categories',
+          compact('revenue', 'bankaccounts', 'currencies', 'account_currency_code', 'customers', 'categories',
             'payment_methods'));
     }
 

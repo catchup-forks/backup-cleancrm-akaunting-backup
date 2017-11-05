@@ -61,22 +61,22 @@ class Account extends Model
 
     public function invoice_payments()
     {
-        return $this->hasMany('App\Models\Income\InvoicePayment');
+        return $this->hasMany('App\Models\Income\InvoicePayment','bankaccount_id');
     }
 
     public function revenues()
     {
-        return $this->hasMany('App\Models\Income\Revenue');
+        return $this->hasMany('App\Models\Income\Revenue','bankaccount_id');
     }
 
     public function bill_payments()
     {
-        return $this->hasMany('App\Models\Expense\BillPayment');
+        return $this->hasMany('App\Models\Expense\BillPayment','bankaccount_id');
     }
 
     public function payments()
     {
-        return $this->hasMany('App\Models\Expense\Payment');
+        return $this->hasMany('App\Models\Expense\Payment','bankaccount_id');
     }
 
     /**

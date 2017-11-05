@@ -33,15 +33,15 @@ class Search extends Controller
     {
         $results = array();
         $keyword = request('keyword');
-        $accounts = Account::enabled()->search($keyword)->get();
-        if ($accounts->count()) {
-            foreach ($accounts as $account) {
+        $bankaccounts = Account::enabled()->search($keyword)->get();
+        if ($bankaccounts->count()) {
+            foreach ($bankaccounts as $account) {
                 $results[] = (object)[
                   'id' => $account->id,
                   'name' => $account->name,
-                  'type' => trans_choice('general.accounts', 1),
+                  'type' => trans_choice('general.bankaccounts', 1),
                   'color' => '#337ab7',
-                  'href' => url('banking/accounts/' . $account->id . '/edit'),
+                  'href' => url('banking/bankaccounts/' . $account->id . '/edit'),
                 ];
             }
         }

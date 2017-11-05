@@ -9,7 +9,7 @@ return [
   'bills' => 'Fatura | Faturat',
   'payments' => 'Pagesë | Pagesat',
   'vendors' => 'Shitësi | Shitësit',
-  'accounts' => 'Llogaria | Llogaritë',
+  'bankaccounts' => 'Llogaria | Llogaritë',
   'transfers' => 'Transferimi | Transferimet',
   'transactions' => 'Transaksioni | Transaksionet',
   'reports' => 'Raporti | Raportet',

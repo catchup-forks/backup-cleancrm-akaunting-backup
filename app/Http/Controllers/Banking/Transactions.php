@@ -20,8 +20,8 @@ class Transactions extends Controller
     {
         $request = request();
         $transactions = array();
-        $accounts = collect(Account::enabled()->pluck('name', 'id'))
-          ->prepend(trans('general.all_type', ['type' => trans_choice('general.accounts', 2)]), '');
+        $bankaccounts = collect(Account::enabled()->pluck('name', 'id'))
+          ->prepend(trans('general.all_type', ['type' => trans_choice('general.bankaccounts', 2)]), '');
         $types = collect(['expense' => 'Expense', 'income' => 'Income'])
           ->prepend(trans('general.all_type', ['type' => trans_choice('general.types', 2)]), '');
         $categories = collect(Category::enabled()->type('income')->pluck('name', 'id'))
@@ -72,6 +72,6 @@ class Transactions extends Controller
             array_multisort($sort_order, $sort_type, $transactions);
         }
         $transactions = (object)$transactions;
-        return view('banking.transactions.index', compact('transactions', 'accounts', 'types', 'categories'));
+        return view('banking.transactions.index', compact('transactions', 'bankaccounts', 'types', 'categories'));
     }
 }

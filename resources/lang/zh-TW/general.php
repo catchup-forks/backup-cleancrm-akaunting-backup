@@ -9,7 +9,7 @@ return [
   'bills' => '帳單 | 帳單',
   'payments' => '付款 | 付款',
   'vendors' => '供應商 | 供應商',
-  'accounts' => '帳戶 | 帳戶',
+  'bankaccounts' => '帳戶 | 帳戶',
   'transfers' => '移轉 | 移轉',
   'transactions' => '交易 | 交易',
   'reports' => '報告 | 報告',

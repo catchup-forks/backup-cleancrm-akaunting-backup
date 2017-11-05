@@ -82,7 +82,7 @@ class AdminMenu
             if ($user->can(['read-banking-accounts', 'read-banking-transfers', 'read-banking-transactions'])) {
                 $menu->dropdown(trans('general.banking'), function ($sub) use ($user, $attr) {
                     if ($user->can('read-banking-accounts')) {
-                        $sub->url('banking/accounts', trans_choice('general.accounts', 2), 1, $attr);
+                        $sub->url('banking/bankaccounts', trans_choice('general.bankaccounts', 2), 1, $attr);
                     }
                     if ($user->can('read-banking-transfers')) {
                         $sub->url('banking/transfers', trans_choice('general.transfers', 2), 2, $attr);

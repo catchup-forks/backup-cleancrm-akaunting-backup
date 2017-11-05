@@ -55,7 +55,7 @@ Route::group(['middleware' => 'language'], function () {
                 Route::resource('vendors', 'Expenses\Vendors');
             });
             Route::group(['prefix' => 'banking'], function () {
-                Route::resource('accounts', 'Banking\Accounts');
+                Route::resource('bankaccounts', 'Banking\Accounts');
                 Route::resource('transactions', 'Banking\Transactions');
                 Route::resource('transfers', 'Banking\Transfers');
             });

@@ -27,9 +27,9 @@ class Payments extends Controller
           ->prepend(trans('general.all_type', ['type' => trans_choice('general.vendors', 2)]), '');
         $categories = collect(Category::enabled()->type('expense')->pluck('name', 'id'))
           ->prepend(trans('general.all_type', ['type' => trans_choice('general.categories', 2)]), '');
-        $accounts = collect(Account::enabled()->pluck('name', 'id'))
-          ->prepend(trans('general.all_type', ['type' => trans_choice('general.accounts', 2)]), '');
-        return view('expenses.payments.index', compact('payments', 'vendors', 'categories', 'accounts'));
+        $bankaccounts = collect(Account::enabled()->pluck('name', 'id'))
+          ->prepend(trans('general.all_type', ['type' => trans_choice('general.bankaccounts', 2)]), '');
+        return view('expenses.payments.index', compact('payments', 'vendors', 'categories', 'bankaccounts'));
     }
 
     /**
@@ -39,7 +39,7 @@ class Payments extends Controller
      */
     public function create()
     {
-        $accounts = Account::enabled()->pluck('name', 'id');
+        $bankaccounts = Account::enabled()->pluck('name', 'id');
         $currencies = Currency::enabled()->pluck('name', 'code')->toArray();
         $account_currency_code = Account::where('id',
           setting('general.default_account'))->pluck('currency_code')->first();
@@ -47,7 +47,7 @@ class Payments extends Controller
         $categories = Category::enabled()->type('expense')->pluck('name', 'id');
         $payment_methods = Modules::getPaymentMethods();
         return view('expenses.payments.create',
-          compact('accounts', 'currencies', 'account_currency_code', 'vendors', 'categories', 'payment_methods'));
+          compact('bankaccounts', 'currencies', 'account_currency_code', 'vendors', 'categories', 'payment_methods'));
     }
 
     /**
@@ -83,14 +83,14 @@ class Payments extends Controller
      */
     public function edit(Payment $payment)
     {
-        $accounts = Account::enabled()->pluck('name', 'id');
+        $bankaccounts = Account::enabled()->pluck('name', 'id');
         $currencies = Currency::enabled()->pluck('name', 'code')->toArray();
         $account_currency_code = Account::where('id', $payment->bankaccount_id)->pluck('currency_code')->first();
         $vendors = Vendor::enabled()->pluck('name', 'id');
         $categories = Category::enabled()->type('expense')->pluck('name', 'id');
         $payment_methods = Modules::getPaymentMethods();
         return view('expenses.payments.edit',
-          compact('payment', 'accounts', 'currencies', 'account_currency_code', 'vendors', 'categories',
+          compact('payment', 'bankaccounts', 'currencies', 'account_currency_code', 'vendors', 'categories',
             'payment_methods'));
     }
 

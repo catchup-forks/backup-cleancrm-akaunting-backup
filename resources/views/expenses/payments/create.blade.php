@@ -12,7 +12,7 @@
 
     {{ Form::textGroup('amount', trans('general.amount'), 'money', ['required' => 'required', 'autofocus' => 'autofocus']) }}
 
-    {{ Form::selectGroup('bankaccount_id', trans_choice('general.accounts', 1), 'university', $accounts, setting('general.default_account')) }}
+    {{ Form::selectGroup('bankaccount_id', trans_choice('general.bankaccounts', 1), 'university', $bankaccounts, setting('general.default_account')) }}
 
     <div class="form-group col-md-6 {{ $errors->has('currency_code') ? 'has-error' : ''}}">
       {!! Form::label('currency_code', trans_choice('general.currencies', 1), ['class' => 'control-label']) !!}
@@ -66,8 +66,8 @@
         autoclose: true
       });
 
-      $("#account_id").select2({
-        placeholder: "{{ trans('general.form.select.field', ['field' => trans_choice('general.accounts', 1)]) }}"
+      $("#bankaccount_id").select2({
+        placeholder: "{{ trans('general.form.select.field', ['field' => trans_choice('general.bankaccounts', 1)]) }}"
       });
 
       $("#category_id").select2({
@@ -88,12 +88,12 @@
         placeholder: '{{ trans('general.form.no_file_selected') }}'
       });
 
-      $(document).on('change', '#account_id', function (e) {
+      $(document).on('change', '#bankaccount_id', function (e) {
         $.ajax({
           url: '{{ url("settings/currencies/currency") }}',
           type: 'GET',
           dataType: 'JSON',
-          data: 'account_id=' + $(this).val(),
+          data: 'bankaccount_id=' + $(this).val(),
           success: function (data) {
             $('#currency').val(data.currency_name);
             $('#currency_code').val(data.currency_code);

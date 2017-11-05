@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
-@section('title', trans('general.title.new', ['type' => trans_choice('general.accounts', 1)]))
+@section('title', trans('general.title.new', ['type' => trans_choice('general.bankaccounts', 1)]))
 
 @section('content')
   <!-- Default box -->
 <div class="box box-success">
-  {!! Form::open(['url' => 'banking/accounts', 'role' => 'form']) !!}
+  {!! Form::open(['url' => 'banking/bankaccounts', 'role' => 'form']) !!}
 
   <div class="box-body">
     {{ Form::textGroup('name', trans('general.name'), 'id-card-o') }}
@@ -29,7 +29,7 @@
   <!-- /.box-body -->
 
   <div class="box-footer">
-    {{ Form::saveButtons('banking/accounts') }}
+    {{ Form::saveButtons('banking/bankaccounts') }}
   </div>
   <!-- /.box-footer -->
 

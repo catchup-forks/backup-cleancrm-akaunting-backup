@@ -18,8 +18,8 @@ class Accounts extends ApiController
      */
     public function index()
     {
-        $accounts = Account::collect();
-        return $this->response->paginator($accounts, new Transformer());
+        $bankaccounts = Account::collect();
+        return $this->response->paginator($bankaccounts, new Transformer());
     }
 
     /**
@@ -42,7 +42,7 @@ class Accounts extends ApiController
     public function store(Request $request)
     {
         $account = Account::create($request->all());
-        return $this->response->created(url('api/accounts/' . $account->id));
+        return $this->response->created(url('api/bankaccounts/' . $account->id));
     }
 
     /**

@@ -17,7 +17,7 @@ $api->version('v1', ['middleware' => ['api.auth', 'api.company', 'throttle:60,1'
           $api->resource('payments', 'Expenses\Payments');
           $api->resource('vendors', 'Expenses\Vendors');
           // Banking
-          $api->resource('accounts', 'Banking\Accounts');
+          $api->resource('bankaccounts', 'Banking\Accounts');
           $api->resource('transfers', 'Banking\Transfers');
           // Settings
           $api->resource('categories', 'Settings\Categories');

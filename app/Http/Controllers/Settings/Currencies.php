@@ -87,7 +87,7 @@ class Currencies extends Controller
     public function update(Currency $currency, Request $request)
     {
         $relationships = $this->countRelationships($currency, [
-          'accounts' => 'accounts',
+          'bankaccounts' => 'bankaccounts',
           'customers' => 'customers',
           'invoices' => 'invoices',
           'revenues' => 'revenues',
@@ -125,7 +125,7 @@ class Currencies extends Controller
     public function destroy(Currency $currency)
     {
         $relationships = $this->countRelationships($currency, [
-          'accounts' => 'accounts',
+          'bankaccounts' => 'bankaccounts',
           'customers' => 'customers',
           'invoices' => 'invoices',
           'revenues' => 'revenues',

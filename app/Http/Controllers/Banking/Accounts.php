@@ -16,8 +16,8 @@ class Accounts extends Controller
      */
     public function index()
     {
-        $accounts = Account::collect();
-        return view('banking.accounts.index', compact('accounts'));
+        $bankaccounts = Account::collect();
+        return view('banking.accounts.index', compact('bankaccounts'));
     }
 
     /**
@@ -46,9 +46,9 @@ class Accounts extends Controller
             setting()->set('general.default_account', $account->id);
             setting()->save();
         }
-        $message = trans('messages.success.added', ['type' => trans_choice('general.accounts', 1)]);
+        $message = trans('messages.success.added', ['type' => trans_choice('general.bankaccounts', 1)]);
         flash($message)->success();
-        return redirect('banking/accounts');
+        return redirect('banking/bankaccounts');
     }
 
     /**
@@ -81,9 +81,9 @@ class Accounts extends Controller
             setting()->set('general.default_account', $account->id);
             setting()->save();
         }
-        $message = trans('messages.success.updated', ['type' => trans_choice('general.accounts', 1)]);
+        $message = trans('messages.success.updated', ['type' => trans_choice('general.bankaccounts', 1)]);
         flash($message)->success();
-        return redirect('banking/accounts');
+        return redirect('banking/bankaccounts');
     }
 
     /**
@@ -103,13 +103,13 @@ class Accounts extends Controller
         ]);
         if (empty($relationships)) {
             $account->delete();
-            $message = trans('messages.success.deleted', ['type' => trans_choice('general.accounts', 1)]);
+            $message = trans('messages.success.deleted', ['type' => trans_choice('general.bankaccounts', 1)]);
             flash($message)->success();
         } else {
             $message = trans('messages.warning.deleted',
               ['name' => $account->name, 'text' => implode(', ', $relationships)]);
             flash($message)->warning();
         }
-        return redirect('banking/accounts');
+        return redirect('banking/bankaccounts');
     }
 }

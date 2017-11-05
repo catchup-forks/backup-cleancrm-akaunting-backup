@@ -235,10 +235,10 @@
           </div>
         </div>
         <div class="box-body">
-          @if ($accounts->count())
+          @if ($bankaccounts->count())
             <table class="table table-striped">
               <tbody>
-              @foreach($accounts as $item)
+              @foreach($bankaccounts as $item)
                 <tr>
                   <td class="text-left">{{ $item->name }}</td>
                   <td class="text-right">@money($item->balance, $item->currency_code, true)</td>

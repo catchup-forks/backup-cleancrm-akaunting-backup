@@ -219,7 +219,7 @@
             <tr>
               <th>{{ trans('general.date') }}</th>
               <th>{{ trans('general.amount') }}</th>
-              <th>{{ trans_choice('general.accounts', 1) }}</th>
+              <th>{{ trans_choice('general.bankaccounts', 1) }}</th>
               <th style="width: 15%;">{{ trans('general.actions') }}</th>
             </tr>
             </thead>
@@ -300,10 +300,10 @@
         html += '                   </div>';
         html += '               </div>';
         html += '               <div class="form-group col-md-6 required">';
-        html += '                   {!! Form::label('bankaccount_id', trans_choice('general.accounts', 1), ['class' => 'control-label']) !!}';
+        html += '                   {!! Form::label('bankaccount_id', trans_choice('general.bankaccounts', 1), ['class' => 'control-label']) !!}';
         html += '                   <div class="input-group">';
         html += '                       <div class="input-group-addon"><i class="fa fa-university"></i></div>';
-        html += '                       {!! Form::select('bankaccount_id', $accounts, setting('general.default_account'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('general.form.select.field', ['field' => trans_choice('general.accounts', 1)])]) !!}';
+        html += '                       {!! Form::select('bankaccount_id', $bankaccounts, setting('general.default_account'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('general.form.select.field', ['field' => trans_choice('general.bankaccounts', 1)])]) !!}';
         html += '                   </div>';
         html += '               </div>';
         html += '               <div class="form-group col-md-6 required">';
@@ -349,8 +349,8 @@
           autoclose: true
         });
 
-        $("#account_id").select2({
-          placeholder: "{{ trans('general.form.select.field', ['field' => trans_choice('general.accounts', 1)]) }}"
+        $("#bankaccount_id").select2({
+          placeholder: "{{ trans('general.form.select.field', ['field' => trans_choice('general.bankaccounts', 1)]) }}"
         });
 
         $("#payment_method").select2({
@@ -360,12 +360,12 @@
         $('#payment-modal').modal('show');
       });
 
-      $(document).on('change', '#account_id', function (e) {
+      $(document).on('change', '#bankaccount_id', function (e) {
         $.ajax({
           url: '{{ url("settings/currencies/currency") }}',
           type: 'GET',
           dataType: 'JSON',
-          data: 'account_id=' + $(this).val(),
+          data: 'bankaccount_id=' + $(this).val(),
           success: function (data) {
             $('#currency').val(data.currency_name);
             $('#currency_code').val(data.currency_code);
@@ -437,7 +437,7 @@
             }
 
             if (errors.bankaccount_id) {
-              $('#payment-modal #account_id').parent().after('<p class="help-block">' + errors.bankaccount_id + '</p>');
+              $('#payment-modal #bankaccount_id').parent().after('<p class="help-block">' + errors.bankaccount_id + '</p>');
             }
 
             if (errors.currency_code) {

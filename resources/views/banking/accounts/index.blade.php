@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
-@section('title', trans_choice('general.accounts', 2))
+@section('title', trans_choice('general.bankaccounts', 2))
 
 @permission('create-banking-accounts')
 @section('new_button')
-  <span class="new-button"><a href="{{ url('banking/accounts/create') }}" class="btn btn-success btn-sm"><span
+  <span class="new-button"><a href="{{ url('banking/bankaccounts/create') }}" class="btn btn-success btn-sm"><span
         class="fa fa-plus"></span> &nbsp;{{ trans('general.add_new') }}</a></span>
   @endsection
   @endpermission
@@ -13,7 +13,7 @@
     <!-- Default box -->
   <div class="box box-success">
     <div class="box-header with-border">
-      {!! Form::open(['url' => 'banking/accounts', 'role' => 'form', 'method' => 'GET']) !!}
+      {!! Form::open(['url' => 'banking/bankaccounts', 'role' => 'form', 'method' => 'GET']) !!}
       <div class="pull-left">
         <span class="title-filter hidden-xs">{{ trans('general.search') }}:</span>
         {!! Form::text('search', request('search'), ['class' => 'form-control input-filter input-sm', 'placeholder' => trans('general.search_placeholder')]) !!}
@@ -40,9 +40,9 @@
           </tr>
           </thead>
           <tbody>
-          @foreach($accounts as $item)
+          @foreach($bankaccounts as $item)
             <tr>
-              <td><a href="{{ url('banking/accounts/' . $item->id . '/edit') }}">{{ $item->name }}</a></td>
+              <td><a href="{{ url('banking/bankaccounts/' . $item->id . '/edit') }}">{{ $item->name }}</a></td>
               <td class="hidden-xs">{{ $item->number }}</td>
               <td>@money($item->balance, $item->currency_code, true)</td>
               <td class="hidden-xs">
@@ -59,10 +59,10 @@
                     <i class="fa fa-ellipsis-h"></i>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="{{ url('banking/accounts/' . $item->id . '/edit') }}">{{ trans('general.edit') }}</a>
+                    <li><a href="{{ url('banking/bankaccounts/' . $item->id . '/edit') }}">{{ trans('general.edit') }}</a>
                     </li>
                     @permission('delete-banking-accounts')
-                    <li>{!! Form::deleteLink($item, 'banking/accounts') !!}</li>
+                    <li>{!! Form::deleteLink($item, 'banking/bankaccounts') !!}</li>
                     @endpermission
                   </ul>
                 </div>
@@ -76,7 +76,7 @@
     <!-- /.box-body -->
 
     <div class="box-footer">
-      @include('partials.admin.pagination', ['items' => $accounts, 'type' => 'accounts'])
+      @include('partials.admin.pagination', ['items' => $bankaccounts, 'type' => 'bankaccounts'])
     </div>
     <!-- /.box-footer -->
   </div>

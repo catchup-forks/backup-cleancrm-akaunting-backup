@@ -36,7 +36,7 @@ class Company
     public function deleted(Model $company)
     {
         $tables = [
-          'accounts',
+          'bankaccounts',
           'bill_histories',
           'bill_items',
           'bill_payments',

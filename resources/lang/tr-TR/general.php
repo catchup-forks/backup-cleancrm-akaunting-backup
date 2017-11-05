@@ -9,7 +9,7 @@ return [
   'bills' => 'Fatura|Faturalar',
   'payments' => 'Ödeme|Ödemeler',
   'vendors' => 'Tedarikçi|Tedarikçiler',
-  'accounts' => 'Hesap|Hesaplar',
+  'bankaccounts' => 'Hesap|Hesaplar',
   'transfers' => 'Transfer|Transferler',
   'transactions' => 'İşlem|İşlemler',
   'reports' => 'Rapor|Raporlar',

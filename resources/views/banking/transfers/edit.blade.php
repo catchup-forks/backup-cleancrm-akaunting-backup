@@ -12,9 +12,9 @@
   ]) !!}
 
   <div class="box-body">
-    {{ Form::selectGroup('from_account_id', trans('transfers.from_account'), 'university', $accounts) }}
+    {{ Form::selectGroup('from_account_id', trans('transfers.from_account'), 'university', $bankaccounts) }}
 
-    {{ Form::selectGroup('to_account_id', trans('transfers.to_account'), 'university', $accounts) }}
+    {{ Form::selectGroup('to_account_id', trans('transfers.to_account'), 'university', $bankaccounts) }}
 
     {{ Form::textGroup('amount', trans('general.amount'), 'money') }}
 
@@ -57,11 +57,11 @@
       });
 
       $("#from_account_id").select2({
-        placeholder: "{{ trans('general.form.select.field', ['field' => trans_choice('general.accounts', 1)]) }}"
+        placeholder: "{{ trans('general.form.select.field', ['field' => trans_choice('general.bankaccounts', 1)]) }}"
       });
 
       $("#to_account_id").select2({
-        placeholder: "{{ trans('general.form.select.field', ['field' => trans_choice('general.accounts', 1)]) }}"
+        placeholder: "{{ trans('general.form.select.field', ['field' => trans_choice('general.bankaccounts', 1)]) }}"
       });
 
       $("#payment_method").select2({

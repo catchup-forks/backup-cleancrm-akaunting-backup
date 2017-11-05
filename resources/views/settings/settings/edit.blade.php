@@ -67,7 +67,7 @@
         </div>
 
         <div class="tab-pane tab-margin" id="default">
-          {{ Form::selectGroup('default_account', trans('settings.default.account'), 'university', $accounts, null, []) }}
+          {{ Form::selectGroup('default_account', trans('settings.default.account'), 'university', $bankaccounts, null, []) }}
 
           {{ Form::selectGroup('default_currency', trans('settings.default.currency'), 'exchange', $currencies, null, []) }}
 

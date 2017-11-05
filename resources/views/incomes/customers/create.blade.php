@@ -8,6 +8,8 @@
   {!! Form::open(['url' => 'incomes/customers', 'role' => 'form']) !!}
 
   <div class="box-body">
+    {{ Form::radioGroup('enabled', trans('general.enabled')) }}
+
     {{ Form::textGroup('name', trans('general.name'), 'id-card-o') }}
 
     {{ Form::textGroup('email', trans('general.email'), 'envelope') }}
@@ -22,9 +24,7 @@
 
     {{ Form::textareaGroup('address', trans('general.address')) }}
 
-    {{ Form::radioGroup('enabled', trans('general.enabled')) }}
-
-    <div class="form-group col-md-12">
+    {{--<div class="form-group col-md-12">
       {!! Form::label('create_user', trans('general.create_user'), ['class' => 'control-label']) !!}
       <br/>
       <div class="col-md-12">
@@ -34,7 +34,7 @@
 
     {{ Form::passwordGroup('password', trans('auth.password.current'), 'key', [], null, 'col-md-6 password hidden') }}
 
-    {{ Form::passwordGroup('password_confirmation', trans('auth.password.current_confirm'), 'key', [], null, 'col-md-6 password hidden') }}
+    {{ Form::passwordGroup('password_confirmation', trans('auth.password.current_confirm'), 'key', [], null, 'col-md-6 password hidden') }}--}}
 
   </div>
   <!-- /.box-body -->

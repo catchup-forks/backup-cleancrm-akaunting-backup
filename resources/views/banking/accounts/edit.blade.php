@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', trans('general.title.edit', ['type' => trans_choice('general.accounts', 1)]))
+@section('title', trans('general.title.edit', ['type' => trans_choice('general.bankaccounts', 1)]))
 
 @section('content')
   <!-- Default box -->
 <div class="box box-success">
   {!! Form::model($account, [
       'method' => 'PATCH',
-      'url' => ['banking/accounts', $account->id],
+      'url' => ['banking/bankaccounts', $account->id],
       'role' => 'form'
   ]) !!}
 
@@ -34,7 +34,7 @@
 
   @permission('update-banking-accounts')
   <div class="box-footer">
-    {{ Form::saveButtons('banking/accounts') }}
+    {{ Form::saveButtons('banking/bankaccounts') }}
   </div>
   <!-- /.box-footer -->
   @endpermission

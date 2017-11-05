@@ -223,7 +223,7 @@ class Dashboard extends Controller
         /*
          * Accounts
          */
-        $accounts = Account::enabled()->get();
+        $bankaccounts = Account::enabled()->get();
         /*
          * Latest Incomes
          */
@@ -245,7 +245,7 @@ class Dashboard extends Controller
           'expenses',
           'expenses_amount',
           'expense_graph',
-          'accounts',
+          'bankaccounts',
           'latest_incomes',
           'latest_expenses'
         ));

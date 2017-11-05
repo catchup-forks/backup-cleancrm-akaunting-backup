@@ -9,7 +9,7 @@ return [
   'bills' => 'Recibo | Recibos',
   'payments' => 'Pago | Pagos',
   'vendors' => 'Proveedor | Proveedores',
-  'accounts' => 'Cuenta | Cuentas',
+  'bankaccounts' => 'Cuenta | Cuentas',
   'transfers' => 'Transferencia | Transferencias',
   'transactions' => 'Transacción | Transacciones',
   'reports' => 'Informe | Informes',

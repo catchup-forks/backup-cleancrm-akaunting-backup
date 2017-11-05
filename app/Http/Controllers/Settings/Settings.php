@@ -28,7 +28,7 @@ class Settings extends Controller
             return $s;
         })->pluck('value', 'key');
         $timezones = $this->getTimezones();
-        $accounts = Account::enabled()->pluck('name', 'id');
+        $bankaccounts = Account::enabled()->pluck('name', 'id');
         $currencies = Currency::enabled()->pluck('name', 'code');
         $taxes = Tax::enabled()->pluck('name', 'id');
         $payment_methods = Modules::getPaymentMethods();
@@ -55,7 +55,7 @@ class Settings extends Controller
         return view('settings.settings.edit', compact(
           'setting',
           'timezones',
-          'accounts',
+          'bankaccounts',
           'currencies',
           'taxes',
           'payment_methods',

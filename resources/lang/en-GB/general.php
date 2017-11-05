@@ -9,7 +9,7 @@ return [
   'bills' => 'Bill|Bills',
   'payments' => 'Payment|Payments',
   'vendors' => 'Vendor|Vendors',
-  'accounts' => 'Account|Accounts',
+  'bankaccounts' => 'Bank account| Bank accounts',
   'transfers' => 'Transfer|Transfers',
   'transactions' => 'Transaction|Transactions',
   'reports' => 'Report|Reports',
